@@ -1,0 +1,10 @@
+jira
+atlassian-python-api
+python-dotenv
+
+transformers
+torch
+accelerate
+sentencepiece
+
+huggingface_hub
