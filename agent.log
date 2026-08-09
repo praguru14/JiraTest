@@ -1,0 +1,81 @@
+2026-08-08 15:53:38,751 INFO Starting agent (once=True, interval=10m, board_id=None)
+2026-08-08 15:53:39,873 INFO Agent run starting
+2026-08-08 15:53:43,344 INFO SCRUM Sprint 1 up-to-date: page 8 vs issues 8
+2026-08-08 15:53:43,344 INFO Agent run finished
+2026-08-08 15:53:57,254 INFO Starting agent (once=True, interval=10m, board_id=None)
+2026-08-08 15:53:57,944 INFO Agent run starting
+2026-08-08 15:54:01,205 INFO SCRUM Sprint 1 up-to-date: page 8 vs issues 8
+2026-08-08 15:54:01,206 INFO Agent run finished
+2026-08-08 16:39:35,242 INFO Starting agent (once=True, interval=10m, board_id=None)
+2026-08-08 16:39:36,281 INFO Agent run starting
+2026-08-08 16:39:39,592 INFO SCRUM Sprint 1 up-to-date: page 8 vs issues 8
+2026-08-08 16:39:39,592 INFO Agent run finished
+2026-08-08 16:41:50,763 INFO Starting agent (once=False, interval=10m, board_id=None)
+2026-08-08 16:41:51,486 INFO Agent run starting
+2026-08-08 16:41:54,593 INFO SCRUM Sprint 1 up-to-date: page 8 vs issues 8
+2026-08-08 16:41:54,593 INFO Agent run finished
+2026-08-08 16:46:13,667 INFO Agent interrupted by user
+2026-08-08 16:46:26,633 INFO Starting agent (once=True, interval=10m, board_id=None, verbose=False)
+2026-08-08 16:46:27,341 INFO Agent run starting
+2026-08-08 16:46:30,210 INFO Processing sprint SCRUM Sprint 1: page={'id': '294936', 'type': 'page', 'ari': 'ari:cloud:confluence:60480109-08b2-4c89-af8d-94c8d78c8931:page/294936', 'base64EncodedAri': 'YXJpOmNsb3VkOmNvbmZsdWVuY2U6NjA0ODAxMDktMDhiMi00Yzg5LWFmOGQtOTRjOGQ3OGM4OTMxOmNvbnRlbnQvMjk0OTM2', 'status': 'current', 'title': 'Release_Note_SCRUM Sprint 1', 'macroRenderedOutput': {}, 'extensions': {'position': 922}, '_expandable': {'container': '/rest/api/space/SD', 'metadata': '', 'restrictions': '/rest/api/content/294936/restriction/byOperation', 'history': '/rest/api/content/294936/history', 'body': '', 'version': '', 'descendants': '/rest/api/content/294936/descendant', 'space': '/rest/api/space/SD', 'childTypes': '', 'schedulePublishInfo': '', 'operations': '', 'schedulePublishDate': '', 'children': '/rest/api/content/294936/child', 'ancestors': '', 'draftVersion': ''}, '_links': {'self': 'https://praguru14.atlassian.net/wiki/rest/api/content/294936', 'tinyui': '/x/GIAE', 'editui': '/pages/resumedraft.action?draftId=294936', 'webui': '/spaces/SD/pages/294936/Release_Note_SCRUM+Sprint+1', 'edituiv2': '/spaces/SD/pages/edit-v2/294936'}} page_count=8 issues=8
+2026-08-08 16:46:30,210 INFO SCRUM Sprint 1 up-to-date: page 8 vs issues 8
+2026-08-08 16:46:30,210 INFO Agent run finished
+2026-08-08 17:23:37,779 INFO Starting agent (once=True, interval=10m, board_id=None, verbose=True)
+2026-08-08 17:23:38,551 INFO Agent run starting
+2026-08-08 17:23:43,504 INFO Processing sprint SCRUM Sprint 1: page={'id': '294936', 'type': 'page', 'ari': 'ari:cloud:confluence:60480109-08b2-4c89-af8d-94c8d78c8931:page/294936', 'base64EncodedAri': 'YXJpOmNsb3VkOmNvbmZsdWVuY2U6NjA0ODAxMDktMDhiMi00Yzg5LWFmOGQtOTRjOGQ3OGM4OTMxOmNvbnRlbnQvMjk0OTM2', 'status': 'current', 'title': 'Release_Note_SCRUM Sprint 1', 'macroRenderedOutput': {}, 'extensions': {'position': 922}, '_expandable': {'container': '/rest/api/space/SD', 'metadata': '', 'restrictions': '/rest/api/content/294936/restriction/byOperation', 'history': '/rest/api/content/294936/history', 'body': '', 'version': '', 'descendants': '/rest/api/content/294936/descendant', 'space': '/rest/api/space/SD', 'childTypes': '', 'schedulePublishInfo': '', 'operations': '', 'schedulePublishDate': '', 'children': '/rest/api/content/294936/child', 'ancestors': '', 'draftVersion': ''}, '_links': {'self': 'https://praguru14.atlassian.net/wiki/rest/api/content/294936', 'tinyui': '/x/GIAE', 'editui': '/pages/resumedraft.action?draftId=294936', 'webui': '/spaces/SD/pages/294936/Release_Note_SCRUM+Sprint+1', 'edituiv2': '/spaces/SD/pages/edit-v2/294936'}} page_count=8 issues=8
+2026-08-08 17:23:43,505 INFO SCRUM Sprint 1 up-to-date: page 8 vs issues 8
+2026-08-08 17:23:43,505 INFO Agent run finished
+2026-08-08 17:26:35,118 INFO Starting agent (once=True, interval=10m, board_id=None, verbose=True)
+2026-08-08 17:26:35,739 INFO Agent run starting
+2026-08-08 17:26:38,057 INFO Processing sprint SCRUM Sprint 1: page={'id': '294936', 'type': 'page', 'ari': 'ari:cloud:confluence:60480109-08b2-4c89-af8d-94c8d78c8931:page/294936', 'base64EncodedAri': 'YXJpOmNsb3VkOmNvbmZsdWVuY2U6NjA0ODAxMDktMDhiMi00Yzg5LWFmOGQtOTRjOGQ3OGM4OTMxOmNvbnRlbnQvMjk0OTM2', 'status': 'current', 'title': 'Release_Note_SCRUM Sprint 1', 'macroRenderedOutput': {}, 'extensions': {'position': 922}, '_expandable': {'container': '/rest/api/space/SD', 'metadata': '', 'restrictions': '/rest/api/content/294936/restriction/byOperation', 'history': '/rest/api/content/294936/history', 'body': '', 'version': '', 'descendants': '/rest/api/content/294936/descendant', 'space': '/rest/api/space/SD', 'childTypes': '', 'schedulePublishInfo': '', 'operations': '', 'schedulePublishDate': '', 'children': '/rest/api/content/294936/child', 'ancestors': '', 'draftVersion': ''}, '_links': {'self': 'https://praguru14.atlassian.net/wiki/rest/api/content/294936', 'tinyui': '/x/GIAE', 'editui': '/pages/resumedraft.action?draftId=294936', 'webui': '/spaces/SD/pages/294936/Release_Note_SCRUM+Sprint+1', 'edituiv2': '/spaces/SD/pages/edit-v2/294936'}} page_count=8 issues=11
+2026-08-08 17:26:46,531 INFO Planner decision for SCRUM Sprint 1: FINISH
+2026-08-08 17:26:47,173 INFO Processing sprint SCRUM Sprint 2: page=None page_count=0 issues=11
+2026-08-08 17:26:49,638 INFO Planner decision for SCRUM Sprint 2: FINISH
+2026-08-08 17:26:50,230 INFO Processing sprint SCRUM Sprint 3: page=None page_count=0 issues=3
+2026-08-08 17:26:52,619 INFO Planner decision for SCRUM Sprint 3: FINISH
+2026-08-08 17:26:52,619 INFO Agent run finished
+2026-08-08 17:56:19,087 INFO jira_conf: Starting JiraConf AI
+2026-08-08 17:56:19,087 DEBUG jira_conf: Fetching boards list from Jira
+2026-08-08 17:56:19,834 INFO jira_conf: Processing sprint: SCRUM Sprint 3
+2026-08-08 17:56:20,738 INFO jira_conf: Found 3 done tickets for sprint SCRUM Sprint 3
+2026-08-08 17:56:21,474 INFO jira_conf: No Confluence page found for SCRUM Sprint 3; will generate
+2026-08-08 17:56:21,475 DEBUG jira_conf: Forcing initial action: GENERATE_RELEASE_NOTES
+2026-08-08 17:56:21,475 INFO jira_conf: Action=GENERATE_RELEASE_NOTES
+2026-08-08 17:56:21,476 INFO jira_conf.release_agent: Processing SCRUM-7
+2026-08-08 17:56:21,486 INFO jira_conf.release_agent: Processing SCRUM-4
+2026-08-08 17:56:21,487 INFO jira_conf.local_llm: Loading Local LLM...
+2026-08-08 17:56:21,487 INFO jira_conf.release_agent: Processing SCRUM-3
+2026-08-08 17:56:26,662 INFO jira_conf.local_llm: Model Loaded.
+2026-08-08 17:56:55,065 DEBUG jira_conf: Forcing initial action: REVIEW_RELEASE_NOTES
+2026-08-08 17:56:55,066 INFO jira_conf: Action=REVIEW_RELEASE_NOTES
+2026-08-08 17:57:10,309 DEBUG jira_conf: Reviewer output: {'valid': True, 'errors': [], 'suggestions': ["In 'SCRUM-4', add pagination to the report page.", "In 'SCRUM-3', optimize the search result ranking for better user experience."]}
+2026-08-08 17:57:10,309 INFO jira_conf: Review passed validation; scheduling upload
+2026-08-08 17:57:10,309 DEBUG jira_conf: Forcing initial action: UPLOAD_CONFLUENCE
+2026-08-08 17:57:10,309 INFO jira_conf: Action=UPLOAD_CONFLUENCE
+2026-08-08 17:57:10,311 DEBUG jira_conf: Uploading page title=Release_Note_SCRUM Sprint 3, html length=630
+2026-08-08 17:57:11,598 INFO jira_conf.confluence: Page Created: Release_Note_SCRUM Sprint 3
+2026-08-08 17:57:11,598 INFO jira_conf: Uploaded Confluence page for sprint SCRUM Sprint 3
+2026-08-08 17:57:11,598 DEBUG jira_conf: Forcing initial action: FINISH
+2026-08-08 18:38:17,344 INFO jira_conf: Starting JiraConf AI
+2026-08-08 18:38:17,344 DEBUG jira_conf: Fetching boards list from Jira
+2026-08-08 18:38:17,934 INFO jira_conf: Processing sprint: Sprint 3
+2026-08-08 18:38:18,739 INFO jira_conf: Found 4 done tickets for sprint Sprint 3
+2026-08-08 18:38:19,369 INFO jira_conf: No Confluence page found for Sprint 3; will generate
+2026-08-08 18:38:19,370 DEBUG jira_conf: Forcing initial action: GENERATE_RELEASE_NOTES
+2026-08-08 18:38:19,370 INFO jira_conf: Action=GENERATE_RELEASE_NOTES
+2026-08-08 18:38:19,371 INFO jira_conf.release_agent: Processing SCRUM-52
+2026-08-08 18:38:19,372 INFO jira_conf.release_agent: Processing SCRUM-7
+2026-08-08 18:38:19,372 INFO jira_conf.local_llm: Loading Local LLM...
+2026-08-08 18:38:19,372 INFO jira_conf.release_agent: Processing SCRUM-4
+2026-08-08 18:38:19,372 INFO jira_conf.release_agent: Processing SCRUM-3
+2026-08-08 18:38:24,791 INFO jira_conf.local_llm: Model Loaded.
+2026-08-08 18:39:07,522 DEBUG jira_conf: Forcing initial action: REVIEW_RELEASE_NOTES
+2026-08-08 18:39:07,522 INFO jira_conf: Action=REVIEW_RELEASE_NOTES
+2026-08-08 18:39:37,046 DEBUG jira_conf: Reviewer output: {'valid': True, 'errors': [], 'suggestions': ["In 'SCRUM-52', add more specific details about how to use the new features.", "Ensure that the 'SCRUM-7' fix is implemented by adding appropriate tests and documentation.", "Clarify the 'SCRUM-4' suggestion by providing examples of how it can be improved.", "Implement 'SCRUM-3' as a bug fix to address the issue of poor search results ranking."]}
+2026-08-08 18:39:37,046 INFO jira_conf: Review passed validation; scheduling upload
+2026-08-08 18:39:37,046 DEBUG jira_conf: Forcing initial action: UPLOAD_CONFLUENCE
+2026-08-08 18:39:37,046 INFO jira_conf: Action=UPLOAD_CONFLUENCE
+2026-08-08 18:39:37,048 DEBUG jira_conf: Uploading page title=Release_Note_Sprint 3, html length=795
+2026-08-08 18:39:38,573 INFO jira_conf.confluence: Page Created: Release_Note_Sprint 3
+2026-08-08 18:39:38,573 INFO jira_conf: Uploaded Confluence page for sprint Sprint 3
+2026-08-08 18:39:38,573 DEBUG jira_conf: Forcing initial action: FINISH

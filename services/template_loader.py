@@ -1,7 +1,3 @@
-"""
-Loads HTML templates.
-"""
-
 from pathlib import Path
 
 

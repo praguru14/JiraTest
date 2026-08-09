@@ -8,3 +8,4 @@ accelerate
 sentencepiece
 
 huggingface_hub
+requests

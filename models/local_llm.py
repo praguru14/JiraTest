@@ -3,6 +3,7 @@ Singleton wrapper around the local Hugging Face model.
 """
 
 import torch
+import logging
 
 from transformers import (
     AutoTokenizer,
@@ -14,6 +15,12 @@ import config
 
 class LocalLLM:
 
+    """Singleton Local LLM with lazy loading.
+
+    The model is only downloaded and loaded into memory on the first call
+    to `generate()` which avoids heavy startup time for quick CLI ops.
+    """
+
     _instance = None
 
     def __new__(cls):
@@ -22,13 +29,13 @@ class LocalLLM:
 
             cls._instance = super().__new__(cls)
 
-            cls._instance._load_model()
+            cls._instance._loaded = False
 
         return cls._instance
 
     def _load_model(self):
-
-        print("\nLoading Local LLM...\n")
+        logger = logging.getLogger("jira_conf.local_llm")
+        logger.info("Loading Local LLM...")
 
         self.tokenizer = AutoTokenizer.from_pretrained(
             config.MODEL_NAME
@@ -40,7 +47,9 @@ class LocalLLM:
             device_map="auto"
         )
 
-        print("Model Loaded.\n")
+        self._loaded = True
+
+        logger.info("Model Loaded.")
 
     def generate(
         self,
@@ -48,6 +57,9 @@ class LocalLLM:
         user_prompt,
         max_tokens=512
     ):
+
+        if not getattr(self, "_loaded", False):
+            self._load_model()
 
         messages = [
             {

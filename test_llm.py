@@ -1,4 +1,7 @@
 from models.local_llm import LocalLLM
+import logging
+
+logger = logging.getLogger("jira_conf.test_llm")
 
 llm = LocalLLM()
 
@@ -10,4 +13,4 @@ answer = llm.generate(
 
 )
 
-print(answer)
+logger.info(answer)

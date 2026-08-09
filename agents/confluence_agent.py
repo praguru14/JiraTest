@@ -1,6 +1,9 @@
 from atlassian import Confluence
 
 import config
+import logging
+
+logger = logging.getLogger("jira_conf.confluence")
 
 
 class ConfluenceAgent:
@@ -23,7 +26,7 @@ class ConfluenceAgent:
         if page:
             return page["id"]
 
-        print("Creating Release Notes parent page...")
+        logger.info("Creating Release Notes parent page...")
 
         page = self.client.create_page(
             space=config.CONFLUENCE_SPACE,
@@ -43,49 +46,73 @@ class ConfluenceAgent:
 
         return page
 
-    def create_or_update_page(
-        self,
-        sprint_name,
-        html
-    ):
+    def get_page_note_count(self, title):
+
+        page = self.page_exists(title)
+
+        if not page:
+            return 0
+
+        # fetch full page content
+        page_id = page["id"]
+
+        page_full = self.client.get_page_by_id(
+            page_id,
+            expand='body.storage'
+        )
+
+        body = page_full.get("body", {}).get("storage", {}).get("value", "")
+
+        # count <tr> tags and subtract header row
+        rows = body.count("<tr>")
+
+        if rows <= 1:
+            return 0
+
+        return rows - 1
+
+    def create_or_update_page(self, title, html):
 
         parent_id = self.get_release_notes_parent()
 
-        title = f"Release_Note_{sprint_name}"
-
+        # `title` is used as provided by callers
         page = self.page_exists(title)
 
         if page:
 
+            logger.info(f"{title} already exists.")
             print(f"\n{title} already exists.")
 
-            choice = input(
-                "Update page? (Y/N): "
-            ).strip().lower()
+            choice = input("Update page? (Y/N): ").strip().lower()
 
             if choice != "y":
-
                 print("Skipped.")
-
+                logger.info("User chose to skip updating existing page")
                 return
 
-            self.client.update_page(
-                page_id=page["id"],
-                title=title,
-                body=html,
-                representation="storage"
-            )
-
-            print("Page Updated.")
+            try:
+                self.client.update_page(
+                    page_id=page["id"],
+                    title=title,
+                    body=html,
+                    representation="storage"
+                )
+                logger.info(f"Page Updated: {title}")
+                print("Page Updated.")
+            except Exception as e:
+                logger.exception(f"Failed to update page {title}: {e}")
 
             return
 
-        self.client.create_page(
-            space=config.CONFLUENCE_SPACE,
-            title=title,
-            body=html,
-            parent_id=parent_id,
-            representation="storage"
-        )
-
-        print("Page Created.")
+        try:
+            self.client.create_page(
+                space=config.CONFLUENCE_SPACE,
+                title=title,
+                body=html,
+                parent_id=parent_id,
+                representation="storage"
+            )
+            logger.info(f"Page Created: {title}")
+            print("Page Created.")
+        except Exception as e:
+            logger.exception(f"Failed to create page {title}: {e}")

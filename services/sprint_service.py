@@ -13,13 +13,14 @@ class SprintService:
 
         boards = self.jira.get_boards()
 
-        print("\nBoards\n")
+        import logging
+        logger = logging.getLogger("jira_conf.sprint_service")
+
+        logger.info("Available Boards:")
 
         for board in boards:
 
-            print(
-                f"{board.id}. {board.name}"
-            )
+            logger.info(f"{board.id}. {board.name}")
 
         board_id = int(
             input(
@@ -33,7 +34,7 @@ class SprintService:
 
         pending = []
 
-        print("\n")
+        logger.debug("Enumerating sprints and checking pending status")
 
         for index, sprint in enumerate(
             sprints,
@@ -47,25 +48,14 @@ class SprintService:
             )
 
             if exists:
-
-                print(
-                    f"{index}. {sprint.name} ✓"
-                )
-
+                logger.info(f"{index}. {sprint.name} ✓")
             else:
-
-                print(
-                    f"{index}. {sprint.name}"
-                )
-
+                logger.info(f"{index}. {sprint.name}")
                 pending.append(sprint)
 
         print()
-
         print("1. Generate One Sprint")
-
         print("2. Generate Pending")
-
         print("3. Exit")
 
         choice = input("\nChoice : ")
