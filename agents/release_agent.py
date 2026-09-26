@@ -18,13 +18,6 @@ class ReleaseAgent:
 
         self.system_prompt = PromptLoader.load("release_prompt.txt")
 
-        self.allowed_labels = {
-            "Feature",
-            "Bug Fix",
-            "Improvement",
-            "Security"
-        }
-
     def generate_release_notes(self, issues):
 
         release_notes = []
@@ -87,6 +80,14 @@ Description:
 
                     note = JsonService.parse_llm_json(response)
 
+                    # Small local models may omit the description even when
+                    # the rest of the JSON is valid. Keep the release note
+                    # useful and deterministic from the Jira summary.
+                    if isinstance(note, dict) and not note.get("description"):
+                        note["description"] = summary or description or (
+                            f"Updates related to {issue.key}."
+                        )
+
                     if not self._validate_note(note):
                         raise ValueError("Validation failed")
 
@@ -129,7 +130,7 @@ Description:
         if "label" not in note or "ticket_number" not in note or "description" not in note:
             return False
 
-        if note["label"] not in self.allowed_labels:
+        if not isinstance(note["label"], str) or not note["label"].strip():
             return False
 
         return True

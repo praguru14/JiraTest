@@ -8,7 +8,7 @@ from agents.release_agent import ReleaseAgent
 from agents.confluence_agent import ConfluenceAgent
 from agents.planner_agent import PlannerAgent
 from agents.reviewer_agent import ReviewerAgent
-from services.html_builder import HTMLBuilder
+from agents.workflow_agent import WorkflowAgent
 
 
 logger = logging.getLogger("jira_conf_agent")
@@ -27,53 +27,24 @@ def process_sprint(jira, confluence, planner, reviewer, release_agent, sprint, b
     title = f"Release_Note_{sprint.name}"
 
     try:
-        # Ask planner first to decide the flow
-        plan_context = {"stage": "plan", "sprint": sprint.name}
-        decision = planner.next_action(plan_context)
-        action = decision.get("action") if isinstance(decision, dict) else None
+        issues = jira.get_done_issues(sprint.name)
+        page = confluence.page_exists(title)
+        page_count = confluence.get_page_note_count(title) if page else 0
 
-        logger.info(f"Planner decision for {sprint.name}: {action}")
-
-        # Gather data only as needed
-        issues = []
-        page = False
-        page_count = 0
-
-        if action in ("GENERATE_RELEASE_NOTES", "REVIEW_RELEASE_NOTES", "UPLOAD_CONFLUENCE", None):
-            issues = jira.get_done_issues(sprint.name)
-            logger.info(f"Found {len(issues)} done tickets for sprint {sprint.name}")
-
-        if action in ("UPLOAD_CONFLUENCE", "REVIEW_RELEASE_NOTES", "GENERATE_RELEASE_NOTES", None):
-            page = confluence.page_exists(title)
-            page_count = confluence.get_page_note_count(title) if page else 0
-
-        # If page is already up-to-date and planner didn't ask for force, skip
-        if page and issues and page_count >= len(issues) and action != "FORCE_UPDATE":
+        if page and issues and page_count >= len(issues):
             logger.info(f"Skipping {sprint.name}: page up-to-date ({page_count} items)")
             return
 
-        release_notes = []
-
-        if action in ("GENERATE_RELEASE_NOTES", None, "FORCE_UPDATE"):
-            release_notes = release_agent.generate_release_notes(issues)
-            logger.info(f"Generated {len(release_notes)} notes for {sprint.name}")
-
-        # Review before publishinga
-        if release_notes:
-            try:
-                review = reviewer.review(release_notes)
-                logger.info(f"Review result for {sprint.name}: {review}")
-                approved = review.get("approved", True) if isinstance(review, dict) else True
-            except Exception as e:
-                logger.exception(f"Review failed for {sprint.name}: {e}")
-                approved = False
-
-            if approved:
-                html = HTMLBuilder.build(sprint.name, release_notes)
-                confluence.create_or_update_page(sprint.name, html)
-                logger.info(f"Uploaded release notes for {sprint.name}")
-            else:
-                logger.info(f"Release notes for {sprint.name} not approved; skipping upload")
+        workflow = WorkflowAgent(jira, confluence, planner, reviewer, release_agent)
+        result = workflow.run(
+            sprint,
+            {
+                "issues": issues,
+                "page_exists": bool(page),
+                "page_count": page_count,
+            },
+        )
+        logger.info("Workflow finished for %s with stage=%s", sprint.name, result.get("stage"))
 
     except Exception as e:
         logger.exception(f"Error processing sprint {sprint.name}: {e}")

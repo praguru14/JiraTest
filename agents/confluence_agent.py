@@ -17,51 +17,62 @@ class ConfluenceAgent:
         )
 
     def get_release_notes_parent(self):
-
-        page = self.client.get_page_by_title(
-            config.CONFLUENCE_SPACE,
-            "Release Notes"
-        )
+        page = self._find_page("Release Notes")
 
         if page:
-            return page["id"]
+            return page.get("id")
 
         logger.info("Creating Release Notes parent page...")
 
-        page = self.client.create_page(
-            space=config.CONFLUENCE_SPACE,
-            title="Release Notes",
-            body="<h1>Release Notes</h1>",
-            representation="storage"
+        page = self.client.post(
+            "rest/api/content",
+            json={
+                "type": "page",
+                "title": "Release Notes",
+                "space": {"key": config.CONFLUENCE_SPACE},
+                "body": {
+                    "storage": {
+                        "value": "<h1>Release Notes</h1>",
+                        "representation": "storage",
+                    }
+                },
+            },
         )
 
-        return page["id"]
-
-    def page_exists(self, title):
-
-        page = self.client.get_page_by_title(
-            config.CONFLUENCE_SPACE,
-            title
-        )
+        if isinstance(page, dict):
+            return page.get("id")
 
         return page
 
+    def page_exists(self, title):
+        return self._find_page(title)
+
+    def _find_page(self, title, expand=None):
+        response = self.client.get(
+            "rest/api/content",
+            params={
+                "spaceKey": config.CONFLUENCE_SPACE,
+                "title": title,
+                "type": "page",
+                "limit": 1,
+                "expand": expand,
+            },
+        )
+
+        if not isinstance(response, dict):
+            return None
+
+        results = response.get("results", [])
+        return results[0] if results and isinstance(results[0], dict) else None
+
     def get_page_note_count(self, title):
 
-        page = self.page_exists(title)
+        page = self._find_page(title, expand="body.storage")
 
         if not page:
             return 0
 
-        # fetch full page content
-        page_id = page["id"]
-
-        page_full = self.client.get_page_by_id(
-            page_id,
-            expand='body.storage'
-        )
-
-        body = page_full.get("body", {}).get("storage", {}).get("value", "")
+        body = page.get("body", {}).get("storage", {}).get("value", "")
 
         # count <tr> tags and subtract header row
         rows = body.count("<tr>")
@@ -76,7 +87,7 @@ class ConfluenceAgent:
         parent_id = self.get_release_notes_parent()
 
         # `title` is used as provided by callers
-        page = self.page_exists(title)
+        page = self._find_page(title, expand="version")
 
         if page:
 
@@ -90,29 +101,40 @@ class ConfluenceAgent:
                 logger.info("User chose to skip updating existing page")
                 return
 
-            try:
-                self.client.update_page(
-                    page_id=page["id"],
-                    title=title,
-                    body=html,
-                    representation="storage"
-                )
-                logger.info(f"Page Updated: {title}")
-                print("Page Updated.")
-            except Exception as e:
-                logger.exception(f"Failed to update page {title}: {e}")
+            version = page.get("version", {}).get("number", 0) + 1
+            self.client.put(
+                f"rest/api/content/{page['id']}",
+                data={
+                    "type": "page",
+                    "title": title,
+                    "version": {"number": version},
+                    "body": {
+                        "storage": {
+                            "value": html,
+                            "representation": "storage",
+                        }
+                    },
+                },
+            )
+            logger.info(f"Page Updated: {title}")
+            print("Page Updated.")
 
             return
 
-        try:
-            self.client.create_page(
-                space=config.CONFLUENCE_SPACE,
-                title=title,
-                body=html,
-                parent_id=parent_id,
-                representation="storage"
-            )
-            logger.info(f"Page Created: {title}")
-            print("Page Created.")
-        except Exception as e:
-            logger.exception(f"Failed to create page {title}: {e}")
+        self.client.post(
+            "rest/api/content",
+            json={
+                "type": "page",
+                "title": title,
+                "space": {"key": config.CONFLUENCE_SPACE},
+                "ancestors": [{"id": parent_id}],
+                "body": {
+                    "storage": {
+                        "value": html,
+                        "representation": "storage",
+                    }
+                },
+            },
+        )
+        logger.info(f"Page Created: {title}")
+        print("Page Created.")

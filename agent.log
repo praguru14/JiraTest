@@ -79,3 +79,782 @@
 2026-08-08 18:39:38,573 INFO jira_conf.confluence: Page Created: Release_Note_Sprint 3
 2026-08-08 18:39:38,573 INFO jira_conf: Uploaded Confluence page for sprint Sprint 3
 2026-08-08 18:39:38,573 DEBUG jira_conf: Forcing initial action: FINISH
+2026-09-25 06:51:12,804 INFO jira_conf: Starting JiraConf AI
+2026-09-25 06:51:12,805 DEBUG jira_conf: Fetching boards list from Jira
+2026-09-25 06:54:22,229 INFO jira_conf: Starting JiraConf AI
+2026-09-25 06:54:22,229 DEBUG jira_conf: Fetching boards list from Jira
+2026-09-25 07:14:07,502 INFO jira_conf: Starting JiraConf AI
+2026-09-25 07:14:07,502 DEBUG jira_conf: Fetching boards list from Jira
+2026-09-25 07:16:56,109 INFO jira_conf: Starting JiraConf AI
+2026-09-25 07:16:56,110 DEBUG jira_conf: Fetching boards list from Jira
+2026-09-25 07:17:01,161 INFO jira_conf: Processing sprint: PG2 Sprint 1
+2026-09-25 07:17:01,975 INFO jira_conf: Found 0 done tickets for sprint PG2 Sprint 1
+2026-09-25 07:25:54,323 INFO jira_conf: Starting JiraConf AI
+2026-09-25 07:25:54,324 DEBUG jira_conf: Fetching boards list from Jira
+2026-09-25 07:25:57,917 INFO jira_conf: Processing sprint: PG2 Sprint 1
+2026-09-25 07:25:58,706 INFO jira_conf: Found 1 done tickets for sprint PG2 Sprint 1
+2026-09-25 07:30:40,397 INFO jira_conf: Starting JiraConf AI
+2026-09-25 07:30:40,397 DEBUG jira_conf: Fetching boards list from Jira
+2026-09-25 07:30:54,463 INFO jira_conf: Processing sprint: PG2 Sprint 1
+2026-09-25 07:30:55,960 INFO jira_conf: Found 1 done tickets for sprint PG2 Sprint 1
+2026-09-25 07:31:23,102 INFO jira_conf: Starting JiraConf AI
+2026-09-25 07:31:23,102 DEBUG jira_conf: Fetching boards list from Jira
+2026-09-25 07:31:23,755 INFO jira_conf: Processing sprint: PG2 Sprint 1
+2026-09-25 07:31:24,531 INFO jira_conf: Found 1 done tickets for sprint PG2 Sprint 1
+2026-09-25 07:33:01,561 INFO jira_conf: Starting JiraConf AI
+2026-09-25 07:33:01,561 DEBUG jira_conf: Fetching boards list from Jira
+2026-09-25 07:33:02,363 INFO jira_conf: Processing sprint: PG2 Sprint 1
+2026-09-25 07:33:03,381 INFO jira_conf: Found 1 done tickets for sprint PG2 Sprint 1
+2026-09-25 07:35:37,496 INFO jira_conf: Starting JiraConf AI
+2026-09-25 07:35:37,497 DEBUG jira_conf: Fetching boards list from Jira
+2026-09-25 07:35:38,156 INFO jira_conf: Processing sprint: PG2 Sprint 1
+2026-09-25 07:35:39,066 INFO jira_conf: Found 1 done tickets for sprint PG2 Sprint 1
+2026-09-25 07:38:29,309 INFO jira_conf: Starting JiraConf AI
+2026-09-25 07:38:29,309 DEBUG jira_conf: Fetching boards list from Jira
+2026-09-25 07:38:29,935 INFO jira_conf: Processing sprint: PG2 Sprint 1
+2026-09-25 07:38:30,613 INFO jira_conf: Found 1 done tickets for sprint PG2 Sprint 1
+2026-09-25 07:38:31,359 INFO jira_conf.local_llm: Loading Local LLM...
+2026-09-25 07:52:37,744 INFO jira_conf: Starting JiraConf AI
+2026-09-25 07:52:37,744 DEBUG jira_conf: Fetching boards list from Jira
+2026-09-25 07:52:38,380 INFO jira_conf: Processing sprint: PG2 Sprint 1
+2026-09-25 07:52:39,327 INFO jira_conf: Found 1 done tickets for sprint PG2 Sprint 1
+2026-09-25 07:53:52,809 INFO jira_conf: Starting JiraConf AI
+2026-09-25 07:53:52,809 DEBUG jira_conf: Fetching boards list from Jira
+2026-09-25 07:53:53,485 INFO jira_conf: Processing sprint: PG2 Sprint 1
+2026-09-25 07:53:54,213 INFO jira_conf: Found 1 done tickets for sprint PG2 Sprint 1
+2026-09-25 07:53:59,438 DEBUG jira_conf.planner: Planner response: {'action': 'FETCH_TICKETS', 'reason': 'No other actions are available until tickets are fetched.'}
+2026-09-25 07:53:59,439 INFO jira_conf.workflow: Workflow step 1: FETCH_TICKETS
+2026-09-25 07:54:03,195 DEBUG jira_conf.planner: Planner response: {'action': 'INSPECT_CONFLUENCE', 'reason': 'No issues fetched, need to inspect Confluence for the fetched issues.'}
+2026-09-25 07:54:03,195 INFO jira_conf.workflow: Workflow step 2: INSPECT_CONFLUENCE
+2026-09-25 07:54:07,205 DEBUG jira_conf.planner: Planner response: {'action': 'GENERATE_RELEASE_NOTES', 'reason': 'Confluence page inspected, no issues found. Proceed to generate release notes.'}
+2026-09-25 07:54:07,206 INFO jira_conf.workflow: Workflow step 3: GENERATE_RELEASE_NOTES
+2026-09-25 07:54:07,207 INFO jira_conf.release_agent: Processing PG2-24
+2026-09-25 07:54:10,740 WARNING jira_conf.release_agent: Failed to parse PG2-24 (attempt 1)
+2026-09-25 07:54:13,592 WARNING jira_conf.release_agent: Failed to parse PG2-24 (attempt 2)
+2026-09-25 07:54:16,424 WARNING jira_conf.release_agent: Failed to parse PG2-24 (attempt 3)
+2026-09-25 07:54:16,425 ERROR jira_conf.release_agent: Max attempts exceeded for PG2-24; response={
+    "label":"Feature",
+    "ticket_number":"PG2-24"
+}
+2026-09-25 07:54:20,626 DEBUG jira_conf.planner: Planner response: {'action': 'GENERATE_RELEASE_NOTES', 'reason': 'No issues to fetch, proceeding with release notes generation.'}
+2026-09-25 07:54:20,626 INFO jira_conf.workflow: Workflow step 4: GENERATE_RELEASE_NOTES
+2026-09-25 07:54:20,627 INFO jira_conf.release_agent: Processing PG2-24
+2026-09-25 07:54:24,206 WARNING jira_conf.release_agent: Failed to parse PG2-24 (attempt 1)
+2026-09-25 07:54:27,042 WARNING jira_conf.release_agent: Failed to parse PG2-24 (attempt 2)
+2026-09-25 07:54:29,854 WARNING jira_conf.release_agent: Failed to parse PG2-24 (attempt 3)
+2026-09-25 07:54:29,854 ERROR jira_conf.release_agent: Max attempts exceeded for PG2-24; response={
+    "label":"Feature",
+    "ticket_number":"PG2-24"
+}
+2026-09-25 07:54:34,125 DEBUG jira_conf.planner: Planner response: {'action': 'GENERATE_RELEASE_NOTES', 'reason': 'No issues to fetch, proceeding with release notes generation.'}
+2026-09-25 07:54:34,125 INFO jira_conf.workflow: Workflow step 5: GENERATE_RELEASE_NOTES
+2026-09-25 07:54:34,126 INFO jira_conf.release_agent: Processing PG2-24
+2026-09-25 07:54:37,666 WARNING jira_conf.release_agent: Failed to parse PG2-24 (attempt 1)
+2026-09-25 07:54:40,484 WARNING jira_conf.release_agent: Failed to parse PG2-24 (attempt 2)
+2026-09-25 07:54:43,297 WARNING jira_conf.release_agent: Failed to parse PG2-24 (attempt 3)
+2026-09-25 07:54:43,298 ERROR jira_conf.release_agent: Max attempts exceeded for PG2-24; response={
+    "label":"Feature",
+    "ticket_number":"PG2-24"
+}
+2026-09-25 07:54:47,603 DEBUG jira_conf.planner: Planner response: {'action': 'GENERATE_RELEASE_NOTES', 'reason': 'No issues have been fetched yet, hence no notes can be generated.'}
+2026-09-25 07:54:47,603 INFO jira_conf.workflow: Workflow step 6: GENERATE_RELEASE_NOTES
+2026-09-25 07:54:47,604 INFO jira_conf.release_agent: Processing PG2-24
+2026-09-25 07:54:51,132 WARNING jira_conf.release_agent: Failed to parse PG2-24 (attempt 1)
+2026-09-25 07:54:53,965 WARNING jira_conf.release_agent: Failed to parse PG2-24 (attempt 2)
+2026-09-25 07:54:56,786 WARNING jira_conf.release_agent: Failed to parse PG2-24 (attempt 3)
+2026-09-25 07:54:56,787 ERROR jira_conf.release_agent: Max attempts exceeded for PG2-24; response={
+    "label":"Feature",
+    "ticket_number":"PG2-24"
+}
+2026-09-25 07:55:01,016 DEBUG jira_conf.planner: Planner response: {'action': 'GENERATE_RELEASE_NOTES', 'reason': 'No issues to fetch, proceeding with release notes generation.'}
+2026-09-25 07:55:01,016 INFO jira_conf.workflow: Workflow step 7: GENERATE_RELEASE_NOTES
+2026-09-25 07:55:01,017 INFO jira_conf.release_agent: Processing PG2-24
+2026-09-25 07:55:04,608 WARNING jira_conf.release_agent: Failed to parse PG2-24 (attempt 1)
+2026-09-25 07:55:07,432 WARNING jira_conf.release_agent: Failed to parse PG2-24 (attempt 2)
+2026-09-25 07:55:10,255 WARNING jira_conf.release_agent: Failed to parse PG2-24 (attempt 3)
+2026-09-25 07:55:10,255 ERROR jira_conf.release_agent: Max attempts exceeded for PG2-24; response={
+    "label":"Feature",
+    "ticket_number":"PG2-24"
+}
+2026-09-25 07:55:14,489 DEBUG jira_conf.planner: Planner response: {'action': 'GENERATE_RELEASE_NOTES', 'reason': 'No issues to fetch, proceeding with release notes generation.'}
+2026-09-25 07:55:14,489 INFO jira_conf.workflow: Workflow step 8: GENERATE_RELEASE_NOTES
+2026-09-25 07:55:14,490 INFO jira_conf.release_agent: Processing PG2-24
+2026-09-25 07:55:18,073 WARNING jira_conf.release_agent: Failed to parse PG2-24 (attempt 1)
+2026-09-25 07:55:20,929 WARNING jira_conf.release_agent: Failed to parse PG2-24 (attempt 2)
+2026-09-25 07:55:23,737 WARNING jira_conf.release_agent: Failed to parse PG2-24 (attempt 3)
+2026-09-25 07:55:23,737 ERROR jira_conf.release_agent: Max attempts exceeded for PG2-24; response={
+    "label":"Feature",
+    "ticket_number":"PG2-24"
+}
+2026-09-25 07:55:27,968 DEBUG jira_conf.planner: Planner response: {'action': 'GENERATE_RELEASE_NOTES', 'reason': 'No issues to fetch, proceeding with release notes generation.'}
+2026-09-25 07:55:27,968 INFO jira_conf.workflow: Workflow step 9: GENERATE_RELEASE_NOTES
+2026-09-25 07:55:27,969 INFO jira_conf.release_agent: Processing PG2-24
+2026-09-25 07:55:31,546 WARNING jira_conf.release_agent: Failed to parse PG2-24 (attempt 1)
+2026-09-25 07:55:34,379 WARNING jira_conf.release_agent: Failed to parse PG2-24 (attempt 2)
+2026-09-25 07:55:37,192 WARNING jira_conf.release_agent: Failed to parse PG2-24 (attempt 3)
+2026-09-25 07:55:37,192 ERROR jira_conf.release_agent: Max attempts exceeded for PG2-24; response={
+    "label":"Feature",
+    "ticket_number":"PG2-24"
+}
+2026-09-25 07:55:57,125 INFO jira_conf: Starting JiraConf AI
+2026-09-25 07:55:57,125 DEBUG jira_conf: Fetching boards list from Jira
+2026-09-25 07:55:57,831 INFO jira_conf: Processing sprint: PG2 Sprint 1
+2026-09-25 07:55:58,678 INFO jira_conf: Found 1 done tickets for sprint PG2 Sprint 1
+2026-09-25 07:56:04,873 DEBUG jira_conf.planner: Planner response: {'action': 'FETCH_TICKETS', 'reason': 'No tickets available yet, need to fetch initial issues.'}
+2026-09-25 07:56:04,873 INFO jira_conf.workflow: Workflow step 1: FETCH_TICKETS
+2026-09-25 07:56:09,962 DEBUG jira_conf.planner: Planner response: {'action': 'INSPECT_CONFLUENCE', 'reason': 'No issues fetched, need to inspect Confluence for the fetched tickets.'}
+2026-09-25 07:56:09,963 INFO jira_conf.workflow: Workflow step 2: INSPECT_CONFLUENCE
+2026-09-25 07:56:16,829 DEBUG jira_conf.planner: Planner response: {'action': 'GENERATE_RELEASE_NOTES', 'reason': 'Confluence page inspected, no issues found. Next step is to generate release notes.'}
+2026-09-25 07:56:16,829 INFO jira_conf.workflow: Workflow step 3: GENERATE_RELEASE_NOTES
+2026-09-25 07:56:16,830 INFO jira_conf.release_agent: Processing PG2-24
+2026-09-25 07:56:27,270 DEBUG jira_conf.planner: Planner response: {'action': 'GENERATE_RELEASE_NOTES', 'reason': 'No issues to fetch, moving on to generate release notes.'}
+2026-09-25 07:56:27,271 INFO jira_conf.workflow: Workflow step 4: REVIEW_RELEASE_NOTES
+2026-09-25 07:56:38,955 DEBUG jira_conf.planner: Planner response: {'action': 'GENERATE_RELEASE_NOTES', 'reason': 'Review failed with errors: Missing required keys: `version`, `notes` in release note objects.'}
+2026-09-25 07:56:38,955 INFO jira_conf.workflow: Workflow step 5: GENERATE_RELEASE_NOTES
+2026-09-25 07:56:38,956 INFO jira_conf.release_agent: Processing PG2-24
+2026-09-25 07:56:48,471 DEBUG jira_conf.planner: Planner response: {'action': 'GENERATE_RELEASE_NOTES', 'reason': 'No issues to fetch yet, waiting for tickets.'}
+2026-09-25 07:56:48,471 INFO jira_conf.workflow: Workflow step 6: REVIEW_RELEASE_NOTES
+2026-09-25 07:56:59,040 DEBUG jira_conf.planner: Planner response: {'action': 'REVIEW_RELEASE_NOTES', 'reason': 'Review step is required after release notes generation.'}
+2026-09-25 07:56:59,041 INFO jira_conf.workflow: Workflow step 7: REVIEW_RELEASE_NOTES
+2026-09-25 07:57:09,804 DEBUG jira_conf.planner: Planner response: {'action': 'REVIEW_RELEASE_NOTES', 'reason': 'Review step is required after release notes generation'}
+2026-09-25 07:57:09,804 INFO jira_conf.workflow: Workflow step 8: REVIEW_RELEASE_NOTES
+2026-09-25 07:57:41,318 INFO jira_conf: Starting JiraConf AI
+2026-09-25 07:57:41,318 DEBUG jira_conf: Fetching boards list from Jira
+2026-09-25 07:57:41,934 INFO jira_conf: Processing sprint: PG2 Sprint 1
+2026-09-25 07:57:42,615 INFO jira_conf: Found 1 done tickets for sprint PG2 Sprint 1
+2026-09-25 07:57:49,080 DEBUG jira_conf.planner: Planner response: {'action': 'FETCH_TICKETS', 'reason': 'No tickets are available yet, need to fetch them for further processing.'}
+2026-09-25 07:57:49,081 INFO jira_conf.workflow: Workflow step 1: FETCH_TICKETS
+2026-09-25 07:57:53,455 DEBUG jira_conf.planner: Planner response: {'action': 'FETCH_TICKETS', 'reason': 'Tickets have been fetched successfully.'}
+2026-09-25 07:57:53,456 INFO jira_conf.workflow: Workflow step 2: FETCH_TICKETS
+2026-09-25 07:57:57,434 DEBUG jira_conf.planner: Planner response: {'action': 'FETCH_TICKETS', 'reason': 'Tickets have been fetched successfully.'}
+2026-09-25 07:57:57,434 INFO jira_conf.workflow: Workflow step 3: FETCH_TICKETS
+2026-09-25 07:58:02,041 DEBUG jira_conf.planner: Planner response: {'action': 'INSPECT_CONFLUENCE', 'reason': 'No issues fetched, need to inspect Confluence for the fetched issue.'}
+2026-09-25 07:58:02,041 INFO jira_conf.workflow: Workflow step 4: INSPECT_CONFLUENCE
+2026-09-25 07:58:07,729 DEBUG jira_conf.planner: Planner response: {'action': 'UPLOAD_CONFLUENCE', 'reason': 'Inspected Confluence and found no existing page for the sprint. No issues to upload.'}
+2026-09-25 07:58:07,729 INFO jira_conf.workflow: Workflow step 5: UPLOAD_CONFLUENCE
+2026-09-25 07:58:07,729 ERROR jira_conf.workflow: UPLOAD_CONFLUENCE failed: Release notes must pass review before upload
+Traceback (most recent call last):
+  File "C:\Users\pragu\OneDrive\Desktop\JiraConf\agents\workflow_agent.py", line 80, in run
+    result = tools[action](sprint, state)
+  File "C:\Users\pragu\OneDrive\Desktop\JiraConf\agents\workflow_agent.py", line 162, in _upload_confluence
+    raise ValueError("Release notes must pass review before upload")
+ValueError: Release notes must pass review before upload
+2026-09-25 07:58:12,870 DEBUG jira_conf.planner: Planner response: {'action': 'REVIEW_RELEASE_NOTES', 'reason': 'Last error indicates release notes must pass review before upload, hence reviewing is the next step.'}
+2026-09-25 07:58:12,870 INFO jira_conf.workflow: Workflow step 6: REVIEW_RELEASE_NOTES
+2026-09-25 07:58:12,870 ERROR jira_conf.workflow: REVIEW_RELEASE_NOTES failed: No release notes are available
+Traceback (most recent call last):
+  File "C:\Users\pragu\OneDrive\Desktop\JiraConf\agents\workflow_agent.py", line 80, in run
+    result = tools[action](sprint, state)
+  File "C:\Users\pragu\OneDrive\Desktop\JiraConf\agents\workflow_agent.py", line 148, in _review_release_notes
+    raise ValueError("No release notes are available")
+ValueError: No release notes are available
+2026-09-25 07:58:17,688 DEBUG jira_conf.planner: Planner response: {'action': 'REVIEW_RELEASE_NOTES', 'reason': 'No release notes are available, attempting to review them.'}
+2026-09-25 07:58:17,688 INFO jira_conf.workflow: Workflow step 7: REVIEW_RELEASE_NOTES
+2026-09-25 07:58:17,688 ERROR jira_conf.workflow: REVIEW_RELEASE_NOTES failed: No release notes are available
+Traceback (most recent call last):
+  File "C:\Users\pragu\OneDrive\Desktop\JiraConf\agents\workflow_agent.py", line 80, in run
+    result = tools[action](sprint, state)
+  File "C:\Users\pragu\OneDrive\Desktop\JiraConf\agents\workflow_agent.py", line 148, in _review_release_notes
+    raise ValueError("No release notes are available")
+ValueError: No release notes are available
+2026-09-25 07:58:22,145 DEBUG jira_conf.planner: Planner response: {'action': 'REVIEW_RELEASE_NOTES', 'reason': 'No release notes are available, retrying the review step.'}
+2026-09-25 07:58:22,146 INFO jira_conf.workflow: Workflow step 8: REVIEW_RELEASE_NOTES
+2026-09-25 07:58:22,146 ERROR jira_conf.workflow: REVIEW_RELEASE_NOTES failed: No release notes are available
+Traceback (most recent call last):
+  File "C:\Users\pragu\OneDrive\Desktop\JiraConf\agents\workflow_agent.py", line 80, in run
+    result = tools[action](sprint, state)
+  File "C:\Users\pragu\OneDrive\Desktop\JiraConf\agents\workflow_agent.py", line 148, in _review_release_notes
+    raise ValueError("No release notes are available")
+ValueError: No release notes are available
+2026-09-25 07:58:26,422 DEBUG jira_conf.planner: Planner response: {'action': 'REVIEW_RELEASE_NOTES', 'reason': 'No release notes are available, retrying.'}
+2026-09-25 07:58:26,422 INFO jira_conf.workflow: Workflow step 9: REVIEW_RELEASE_NOTES
+2026-09-25 07:58:26,423 ERROR jira_conf.workflow: REVIEW_RELEASE_NOTES failed: No release notes are available
+Traceback (most recent call last):
+  File "C:\Users\pragu\OneDrive\Desktop\JiraConf\agents\workflow_agent.py", line 80, in run
+    print(f"Planner selected: {action}")
+                 ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pragu\OneDrive\Desktop\JiraConf\agents\workflow_agent.py", line 148, in _review_release_notes
+    "release_notes": notes,
+ValueError: No release notes are available
+2026-09-25 07:58:31,004 DEBUG jira_conf.planner: Planner response: {'action': 'REVIEW_RELEASE_NOTES', 'reason': 'No release notes are available, attempting to generate them.'}
+2026-09-25 07:58:31,004 INFO jira_conf.workflow: Workflow step 10: REVIEW_RELEASE_NOTES
+2026-09-25 07:58:31,005 ERROR jira_conf.workflow: REVIEW_RELEASE_NOTES failed: No release notes are available
+Traceback (most recent call last):
+  File "C:\Users\pragu\OneDrive\Desktop\JiraConf\agents\workflow_agent.py", line 80, in run
+    print(f"Planner selected: {action}")
+                 ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pragu\OneDrive\Desktop\JiraConf\agents\workflow_agent.py", line 148, in _review_release_notes
+    "release_notes": notes,
+ValueError: No release notes are available
+2026-09-25 07:58:51,404 INFO jira_conf: Starting JiraConf AI
+2026-09-25 07:58:51,404 DEBUG jira_conf: Fetching boards list from Jira
+2026-09-25 07:58:52,029 INFO jira_conf: Processing sprint: PG2 Sprint 1
+2026-09-25 07:58:52,799 INFO jira_conf: Found 1 done tickets for sprint PG2 Sprint 1
+2026-09-25 07:58:57,874 DEBUG jira_conf.planner: Planner response: {'action': 'FETCH_TICKETS', 'reason': 'No tickets are available yet, need to fetch them for processing.'}
+2026-09-25 07:58:57,874 INFO jira_conf.workflow: Workflow step 1: FETCH_TICKETS
+2026-09-25 07:59:02,652 DEBUG jira_conf.planner: Planner response: {'action': 'INSPECT_CONFLUENCE', 'reason': 'No release notes have been generated yet, need to inspect Confluence for existing pages.'}
+2026-09-25 07:59:02,652 INFO jira_conf.workflow: Workflow step 2: INSPECT_CONFLUENCE
+2026-09-25 07:59:07,687 DEBUG jira_conf.planner: Planner response: {'action': 'GENERATE_RELEASE_NOTES', 'reason': 'Confluence page inspected, no issues found. Proceed to generate release notes.'}
+2026-09-25 07:59:07,687 INFO jira_conf.workflow: Workflow step 3: GENERATE_RELEASE_NOTES
+2026-09-25 07:59:07,688 INFO jira_conf.release_agent: Processing PG2-24
+2026-09-25 07:59:16,785 DEBUG jira_conf.planner: Planner response: {'action': 'GENERATE_RELEASE_NOTES', 'reason': 'No issues to fetch, proceeding with release notes generation.'}
+2026-09-25 07:59:16,786 INFO jira_conf.workflow: Workflow step 4: REVIEW_RELEASE_NOTES
+2026-09-25 07:59:26,646 DEBUG jira_conf.planner: Planner response: {'action': 'REVIEW_RELEASE_NOTES', 'reason': 'Review step is required after generating release notes.'}
+2026-09-25 07:59:26,647 INFO jira_conf.workflow: Workflow step 5: FINISH
+2026-09-25 07:59:26,647 INFO jira_conf: Workflow finished for PG2 Sprint 1 with stage=finished
+2026-09-25 08:00:32,696 INFO jira_conf: Starting JiraConf AI
+2026-09-25 08:00:32,697 DEBUG jira_conf: Fetching boards list from Jira
+2026-09-25 08:00:33,376 INFO jira_conf: Processing sprint: PG2 Sprint 1
+2026-09-25 08:00:34,110 INFO jira_conf: Found 1 done tickets for sprint PG2 Sprint 1
+2026-09-25 08:00:39,308 DEBUG jira_conf.planner: Planner response: {'action': 'FETCH_TICKETS', 'reason': 'No tickets available yet, need to fetch initial issues.'}
+2026-09-25 08:00:39,308 INFO jira_conf.workflow: Workflow step 1: FETCH_TICKETS
+2026-09-25 08:00:43,913 DEBUG jira_conf.planner: Planner response: {'action': 'INSPECT_CONFLUENCE', 'reason': 'No issues fetched, need to inspect Confluence for the fetched tickets.'}
+2026-09-25 08:00:43,913 INFO jira_conf.workflow: Workflow step 2: INSPECT_CONFLUENCE
+2026-09-25 08:00:49,035 DEBUG jira_conf.planner: Planner response: {'action': 'GENERATE_RELEASE_NOTES', 'reason': 'Inspected Confluence shows no existing pages, hence release notes generation is the next step.'}
+2026-09-25 08:00:49,035 INFO jira_conf.workflow: Workflow step 3: GENERATE_RELEASE_NOTES
+2026-09-25 08:00:49,036 INFO jira_conf.release_agent: Processing PG2-24
+2026-09-25 08:00:58,281 DEBUG jira_conf.planner: Planner response: {'action': 'GENERATE_RELEASE_NOTES', 'reason': 'No issues to fetch, moving on to generate release notes.'}
+2026-09-25 08:00:58,282 INFO jira_conf.workflow: Workflow step 4: REVIEW_RELEASE_NOTES
+2026-09-25 08:01:08,852 DEBUG jira_conf.planner: Planner response: {'action': 'UPLOAD_CONFLUENCE', 'reason': 'No Confluence page exists, need to create and upload release notes.'}
+2026-09-25 08:01:08,853 INFO jira_conf.workflow: Workflow step 5: UPLOAD_CONFLUENCE
+2026-09-25 08:01:10,850 ERROR jira_conf.workflow: UPLOAD_CONFLUENCE failed: string indices must be integers, not 'str'
+Traceback (most recent call last):
+  File "C:\Users\pragu\OneDrive\Desktop\JiraConf\agents\workflow_agent.py", line 88, in run
+    result = tools[action](sprint, state)
+  File "C:\Users\pragu\OneDrive\Desktop\JiraConf\agents\workflow_agent.py", line 198, in _upload_confluence
+    self.confluence.create_or_update_page(title, html)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\pragu\OneDrive\Desktop\JiraConf\agents\confluence_agent.py", line 80, in create_or_update_page
+    parent_id = self.get_release_notes_parent()
+  File "C:\Users\pragu\OneDrive\Desktop\JiraConf\agents\confluence_agent.py", line 27, in get_release_notes_parent
+    return page["id"]
+           ~~~~^^^^^^
+TypeError: string indices must be integers, not 'str'
+2026-09-25 08:01:14,938 DEBUG jira_conf.planner: Planner response: {'action': 'UPLOAD_CONFLUENCE', 'reason': 'Previous upload failed, retrying.'}
+2026-09-25 08:01:14,939 INFO jira_conf.workflow: Workflow step 6: UPLOAD_CONFLUENCE
+2026-09-25 08:01:15,452 ERROR jira_conf.workflow: UPLOAD_CONFLUENCE failed: string indices must be integers, not 'str'
+Traceback (most recent call last):
+  File "C:\Users\pragu\OneDrive\Desktop\JiraConf\agents\workflow_agent.py", line 88, in run
+    result = tools[action](sprint, state)
+  File "C:\Users\pragu\OneDrive\Desktop\JiraConf\agents\workflow_agent.py", line 198, in _upload_confluence
+    self.confluence.create_or_update_page(title, html)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\pragu\OneDrive\Desktop\JiraConf\agents\confluence_agent.py", line 80, in create_or_update_page
+    parent_id = self.get_release_notes_parent()
+  File "C:\Users\pragu\OneDrive\Desktop\JiraConf\agents\confluence_agent.py", line 27, in get_release_notes_parent
+    return page["id"]
+           ~~~~^^^^^^
+TypeError: string indices must be integers, not 'str'
+2026-09-25 08:01:19,785 DEBUG jira_conf.planner: Planner response: {'action': 'UPLOAD_CONFLUENCE', 'reason': "Upload failed with error: string indices must be integers, not 'str'"}
+2026-09-25 08:01:19,785 INFO jira_conf.workflow: Workflow step 7: UPLOAD_CONFLUENCE
+2026-09-25 08:01:20,584 ERROR jira_conf.workflow: UPLOAD_CONFLUENCE failed: string indices must be integers, not 'str'
+Traceback (most recent call last):
+  File "C:\Users\pragu\OneDrive\Desktop\JiraConf\agents\workflow_agent.py", line 88, in run
+    result = tools[action](sprint, state)
+  File "C:\Users\pragu\OneDrive\Desktop\JiraConf\agents\workflow_agent.py", line 198, in _upload_confluence
+    self.confluence.create_or_update_page(title, html)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\pragu\OneDrive\Desktop\JiraConf\agents\confluence_agent.py", line 80, in create_or_update_page
+    parent_id = self.get_release_notes_parent()
+  File "C:\Users\pragu\OneDrive\Desktop\JiraConf\agents\confluence_agent.py", line 27, in get_release_notes_parent
+    return page["id"]
+           ~~~~^^^^^^
+TypeError: string indices must be integers, not 'str'
+2026-09-25 08:01:24,839 DEBUG jira_conf.planner: Planner response: {'action': 'UPLOAD_CONFLUENCE', 'reason': 'Previous upload attempt failed, retrying.'}
+2026-09-25 08:01:24,840 INFO jira_conf.workflow: Workflow step 8: UPLOAD_CONFLUENCE
+2026-09-25 08:01:25,401 ERROR jira_conf.workflow: UPLOAD_CONFLUENCE failed: string indices must be integers, not 'str'
+Traceback (most recent call last):
+  File "C:\Users\pragu\OneDrive\Desktop\JiraConf\agents\workflow_agent.py", line 88, in run
+    result = tools[action](sprint, state)
+  File "C:\Users\pragu\OneDrive\Desktop\JiraConf\agents\workflow_agent.py", line 198, in _upload_confluence
+    self.confluence.create_or_update_page(title, html)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\pragu\OneDrive\Desktop\JiraConf\agents\confluence_agent.py", line 80, in create_or_update_page
+    parent_id = self.get_release_notes_parent()
+  File "C:\Users\pragu\OneDrive\Desktop\JiraConf\agents\confluence_agent.py", line 27, in get_release_notes_parent
+    return page["id"]
+           ~~~~^^^^^^
+TypeError: string indices must be integers, not 'str'
+2026-09-25 08:02:38,126 INFO jira_conf: Starting JiraConf AI
+2026-09-25 08:02:38,126 DEBUG jira_conf: Fetching boards list from Jira
+2026-09-25 08:02:38,931 INFO jira_conf: Processing sprint: PG2 Sprint 1
+2026-09-25 08:02:39,865 INFO jira_conf: Found 1 done tickets for sprint PG2 Sprint 1
+2026-09-25 08:02:44,948 DEBUG jira_conf.planner: Planner response: {'action': 'FETCH_TICKETS', 'reason': 'No further actions can be taken until tickets are fetched.'}
+2026-09-25 08:02:44,948 INFO jira_conf.workflow: Workflow step 1: FETCH_TICKETS
+2026-09-25 08:02:49,682 DEBUG jira_conf.planner: Planner response: {'action': 'INSPECT_CONFLUENCE', 'reason': 'No issues fetched, need to inspect Confluence for the fetched tickets.'}
+2026-09-25 08:02:49,682 INFO jira_conf.workflow: Workflow step 2: INSPECT_CONFLUENCE
+2026-09-25 08:02:53,671 DEBUG jira_conf.planner: Planner response: {'action': 'GENERATE_RELEASE_NOTES', 'reason': ''}
+2026-09-25 08:02:53,672 INFO jira_conf.workflow: Workflow step 3: GENERATE_RELEASE_NOTES
+2026-09-25 08:02:53,673 INFO jira_conf.release_agent: Processing PG2-24
+2026-09-25 08:03:02,884 DEBUG jira_conf.planner: Planner response: {'action': 'GENERATE_RELEASE_NOTES', 'reason': 'No issues to fetch, proceeding with release notes generation.'}
+2026-09-25 08:03:02,885 INFO jira_conf.workflow: Workflow step 4: REVIEW_RELEASE_NOTES
+2026-09-25 08:03:14,037 DEBUG jira_conf.planner: Planner response: {'action': 'UPLOAD_CONFLUENCE', 'reason': 'No Confluence page exists, need to create and upload release notes.'}
+2026-09-25 08:03:14,037 INFO jira_conf.workflow: Workflow step 5: UPLOAD_CONFLUENCE
+2026-09-25 08:03:14,911 ERROR jira_conf.confluence: Failed to create page Release_Note_PG2 Sprint 1: 'Cloud' object has no attribute 'create_page'
+Traceback (most recent call last):
+  File "C:\Users\pragu\OneDrive\Desktop\JiraConf\agents\confluence_agent.py", line 111, in create_or_update_page
+    self.client.create_page(
+    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pragu\OneDrive\Desktop\JiraConf\.venv\Lib\site-packages\atlassian\confluence\__init__.py", line 64, in __getattr__
+    return getattr(self._impl, attr)
+AttributeError: 'Cloud' object has no attribute 'create_page'. Did you mean: 'create_space'?
+2026-09-25 08:03:19,427 DEBUG jira_conf.planner: Planner response: {'action': 'UPLOAD_CONFLUENCE', 'reason': 'Page exists and all required steps are completed.'}
+2026-09-25 08:03:19,427 INFO jira_conf.workflow: Workflow step 6: FINISH
+2026-09-25 08:03:19,427 INFO jira_conf: Workflow finished for PG2 Sprint 1 with stage=finished
+2026-09-25 08:09:10,844 INFO jira_conf: Starting JiraConf AI
+2026-09-25 08:09:10,844 DEBUG jira_conf: Fetching boards list from Jira
+2026-09-25 08:09:11,515 INFO jira_conf: Processing sprint: PG2 Sprint 1
+2026-09-25 08:09:12,135 INFO jira_conf: Found 1 done tickets for sprint PG2 Sprint 1
+2026-09-25 08:09:21,469 DEBUG jira_conf.planner: Planner response: {'action': 'FETCH_TICKETS', 'reason': 'No tickets are available yet, need to fetch them first.'}
+2026-09-25 08:09:21,469 INFO jira_conf.workflow: Workflow step 1: FETCH_TICKETS
+2026-09-25 08:09:26,374 DEBUG jira_conf.planner: Planner response: {'action': 'INSPECT_CONFLUENCE', 'reason': 'No issues fetched, need to inspect Confluence for the fetched tickets.'}
+2026-09-25 08:09:26,375 INFO jira_conf.workflow: Workflow step 2: INSPECT_CONFLUENCE
+2026-09-25 08:09:31,389 DEBUG jira_conf.planner: Planner response: {'action': 'GENERATE_RELEASE_NOTES', 'reason': 'Inspected Confluence shows no issues, proceeding to generate release notes.'}
+2026-09-25 08:09:31,389 INFO jira_conf.workflow: Workflow step 3: GENERATE_RELEASE_NOTES
+2026-09-25 08:09:31,390 INFO jira_conf.release_agent: Processing PG2-24
+2026-09-25 08:09:39,916 DEBUG jira_conf.planner: Planner response: {'action': 'GENERATE_RELEASE_NOTES', 'reason': ''}
+2026-09-25 08:09:39,916 INFO jira_conf.workflow: Workflow step 4: REVIEW_RELEASE_NOTES
+2026-09-25 08:09:50,808 DEBUG jira_conf.planner: Planner response: {'action': 'UPLOAD_CONFLUENCE', 'reason': 'No Confluence page exists, need to create one before uploading release notes.'}
+2026-09-25 08:09:50,808 INFO jira_conf.workflow: Workflow step 5: UPLOAD_CONFLUENCE
+2026-09-25 08:09:52,059 INFO jira_conf.confluence: Page Created: Release_Note_PG2 Sprint 1
+2026-09-25 08:09:56,882 DEBUG jira_conf.planner: Planner response: {'action': 'UPLOAD_CONFLUENCE', 'reason': 'Page does not exist, need to upload the content.'}
+2026-09-25 08:09:56,882 INFO jira_conf.workflow: Workflow step 6: FINISH
+2026-09-25 08:09:56,882 INFO jira_conf: Workflow finished for PG2 Sprint 1 with stage=finished
+2026-09-25 08:12:04,026 INFO jira_conf: Starting JiraConf AI
+2026-09-25 08:12:04,026 DEBUG jira_conf: Fetching boards list from Jira
+2026-09-25 08:12:04,613 INFO jira_conf: Processing sprint: PG2 Sprint 1
+2026-09-25 08:12:05,462 INFO jira_conf: Found 24 done tickets for sprint PG2 Sprint 1
+2026-09-25 08:12:11,189 DEBUG jira_conf.planner: Planner response: {'action': 'FETCH_TICKETS', 'reason': "To prepare for the release, it's necessary to fetch any pending tickets first."}
+2026-09-25 08:12:11,190 INFO jira_conf.workflow: Workflow step 1: FETCH_TICKETS
+2026-09-25 08:12:15,975 DEBUG jira_conf.planner: Planner response: {'action': 'INSPECT_CONFLUENCE', 'reason': 'To identify where to place the fetched tickets, inspection of Confluence is required.'}
+2026-09-25 08:12:15,975 INFO jira_conf.workflow: Workflow step 2: INSPECT_CONFLUENCE
+2026-09-25 08:12:20,280 DEBUG jira_conf.planner: Planner response: {'action': 'GENERATE_RELEASE_NOTES', 'reason': ''}
+2026-09-25 08:12:20,280 INFO jira_conf.workflow: Workflow step 3: GENERATE_RELEASE_NOTES
+2026-09-25 08:12:20,281 INFO jira_conf.release_agent: Processing PG2-24
+2026-09-25 08:12:20,282 INFO jira_conf.release_agent: Processing PG2-23
+2026-09-25 08:12:20,282 INFO jira_conf.release_agent: Processing PG2-22
+2026-09-25 08:12:20,283 INFO jira_conf.release_agent: Processing PG2-21
+2026-09-25 08:12:20,283 INFO jira_conf.release_agent: Processing PG2-20
+2026-09-25 08:12:20,284 INFO jira_conf.release_agent: Processing PG2-19
+2026-09-25 08:12:20,284 INFO jira_conf.release_agent: Processing PG2-18
+2026-09-25 08:12:20,284 INFO jira_conf.release_agent: Processing PG2-17
+2026-09-25 08:12:24,428 INFO jira_conf.release_agent: Processing PG2-16
+2026-09-25 08:12:29,314 WARNING jira_conf.release_agent: Failed to parse PG2-23 (attempt 1)
+2026-09-25 08:12:34,262 WARNING jira_conf.release_agent: Failed to parse PG2-22 (attempt 1)
+2026-09-25 08:12:39,121 WARNING jira_conf.release_agent: Failed to parse PG2-21 (attempt 1)
+2026-09-25 08:12:44,081 WARNING jira_conf.release_agent: Failed to parse PG2-20 (attempt 1)
+2026-09-25 08:12:49,367 WARNING jira_conf.release_agent: Failed to parse PG2-19 (attempt 1)
+2026-09-25 08:12:53,481 INFO jira_conf.release_agent: Processing PG2-15
+2026-09-25 08:12:57,541 INFO jira_conf.release_agent: Processing PG2-14
+2026-09-25 08:13:01,628 INFO jira_conf.release_agent: Processing PG2-13
+2026-09-25 08:13:05,701 INFO jira_conf.release_agent: Processing PG2-12
+2026-09-25 08:13:09,799 INFO jira_conf.release_agent: Processing PG2-11
+2026-09-25 08:13:13,881 INFO jira_conf.release_agent: Processing PG2-10
+2026-09-25 08:13:17,954 INFO jira_conf.release_agent: Processing PG2-9
+2026-09-25 08:13:22,036 INFO jira_conf.release_agent: Processing PG2-8
+2026-09-25 08:13:26,133 INFO jira_conf.release_agent: Processing PG2-7
+2026-09-25 08:13:30,195 INFO jira_conf.release_agent: Processing PG2-6
+2026-09-25 08:13:34,290 INFO jira_conf.release_agent: Processing PG2-5
+2026-09-25 08:13:38,371 INFO jira_conf.release_agent: Processing PG2-4
+2026-09-25 08:13:42,454 INFO jira_conf.release_agent: Processing PG2-3
+2026-09-25 08:13:46,535 INFO jira_conf.release_agent: Processing PG2-2
+2026-09-25 08:13:50,618 INFO jira_conf.release_agent: Processing PG2-1
+2026-09-26 13:49:08,512 INFO jira_conf: Starting JiraConf AI
+2026-09-26 13:49:08,513 DEBUG jira_conf: Fetching boards list from Jira
+2026-09-26 13:49:10,058 INFO jira_conf: Processing sprint: PG2 Sprint 1
+2026-09-26 13:49:12,206 INFO jira_conf: Found 24 done tickets for sprint PG2 Sprint 1
+2026-09-26 13:53:28,460 INFO jira_conf: Starting JiraConf AI
+2026-09-26 13:53:28,460 DEBUG jira_conf: Fetching boards list from Jira
+2026-09-26 13:53:29,289 INFO jira_conf: Processing sprint: PG2 Sprint 1
+2026-09-26 13:53:30,587 INFO jira_conf: Found 24 done tickets for sprint PG2 Sprint 1
+2026-09-26 13:53:40,956 DEBUG jira_conf.planner: Planner response: {'action': 'FETCH_TICKETS', 'reason': 'To prepare for the release, tickets need to be fetched first.'}
+2026-09-26 13:53:40,956 INFO jira_conf.workflow: Workflow step 1: FETCH_TICKETS
+2026-09-26 13:53:46,118 DEBUG jira_conf.planner: Planner response: {'action': 'INSPECT_CONFLUENCE', 'reason': 'To identify where to place the fetched tickets, inspection of Confluence is required.'}
+2026-09-26 13:53:46,118 INFO jira_conf.workflow: Workflow step 2: INSPECT_CONFLUENCE
+2026-09-26 13:53:51,829 DEBUG jira_conf.planner: Planner response: {'action': 'GENERATE_RELEASE_NOTES', 'reason': 'Inspected Confluence page exists and contains issues, next step is to generate release notes.'}
+2026-09-26 13:53:51,829 INFO jira_conf.workflow: Workflow step 3: GENERATE_RELEASE_NOTES
+2026-09-26 13:53:51,830 INFO jira_conf.release_agent: Processing PG2-24
+2026-09-26 13:53:51,831 INFO jira_conf.release_agent: Processing PG2-23
+2026-09-26 13:53:51,832 INFO jira_conf.release_agent: Processing PG2-22
+2026-09-26 13:53:51,832 INFO jira_conf.release_agent: Processing PG2-21
+2026-09-26 13:53:51,833 INFO jira_conf.release_agent: Processing PG2-20
+2026-09-26 13:53:51,833 INFO jira_conf.release_agent: Processing PG2-19
+2026-09-26 13:53:51,834 INFO jira_conf.release_agent: Processing PG2-18
+2026-09-26 13:53:51,834 INFO jira_conf.release_agent: Processing PG2-17
+2026-09-26 13:53:56,088 INFO jira_conf.release_agent: Processing PG2-16
+2026-09-26 13:54:01,069 WARNING jira_conf.release_agent: Failed to parse PG2-23 (attempt 1)
+2026-09-26 13:54:06,066 WARNING jira_conf.release_agent: Failed to parse PG2-22 (attempt 1)
+2026-09-26 13:54:11,210 WARNING jira_conf.release_agent: Failed to parse PG2-21 (attempt 1)
+2026-09-26 13:54:16,166 WARNING jira_conf.release_agent: Failed to parse PG2-20 (attempt 1)
+2026-09-26 13:54:21,296 WARNING jira_conf.release_agent: Failed to parse PG2-19 (attempt 1)
+2026-09-26 13:54:26,207 WARNING jira_conf.release_agent: Failed to parse PG2-18 (attempt 1)
+2026-09-26 13:54:31,485 WARNING jira_conf.release_agent: Failed to parse PG2-17 (attempt 1)
+2026-09-26 13:54:36,771 WARNING jira_conf.release_agent: Failed to parse PG2-16 (attempt 1)
+2026-09-26 13:54:42,019 WARNING jira_conf.release_agent: Failed to parse PG2-23 (attempt 2)
+2026-09-26 13:54:46,965 WARNING jira_conf.release_agent: Failed to parse PG2-22 (attempt 2)
+2026-09-26 13:54:51,966 WARNING jira_conf.release_agent: Failed to parse PG2-21 (attempt 2)
+2026-09-26 13:54:57,367 WARNING jira_conf.release_agent: Failed to parse PG2-20 (attempt 2)
+2026-09-26 13:55:02,986 WARNING jira_conf.release_agent: Failed to parse PG2-19 (attempt 2)
+2026-09-26 13:55:09,824 WARNING jira_conf.release_agent: Failed to parse PG2-18 (attempt 2)
+2026-09-26 13:55:15,714 WARNING jira_conf.release_agent: Failed to parse PG2-17 (attempt 2)
+2026-09-26 13:55:21,424 WARNING jira_conf.release_agent: Failed to parse PG2-16 (attempt 2)
+2026-09-26 13:55:27,085 WARNING jira_conf.release_agent: Failed to parse PG2-23 (attempt 3)
+2026-09-26 13:55:27,086 ERROR jira_conf.release_agent: Max attempts exceeded for PG2-23; response={
+    "label":"Task",
+    "ticket_number":"PG2-23",
+    "description":"Demo ticket created by JiraConf. This ticket is safe to remove after the demonstration."
+}
+2026-09-26 13:55:27,087 INFO jira_conf.release_agent: Processing PG2-15
+2026-09-26 13:55:33,400 WARNING jira_conf.release_agent: Failed to parse PG2-22 (attempt 3)
+2026-09-26 13:55:33,401 ERROR jira_conf.release_agent: Max attempts exceeded for PG2-22; response={
+    "label":"Task",
+    "ticket_number":"PG2-22",
+    "description":"Demo ticket created by JiraConf. This ticket is safe to remove after the demonstration."
+}
+2026-09-26 13:55:33,402 INFO jira_conf.release_agent: Processing PG2-14
+2026-09-26 13:55:38,845 WARNING jira_conf.release_agent: Failed to parse PG2-21 (attempt 3)
+2026-09-26 13:55:38,845 ERROR jira_conf.release_agent: Max attempts exceeded for PG2-21; response={
+    "label":"Task",
+    "ticket_number":"PG2-21",
+    "description":"Demo ticket created by JiraConf. This ticket is safe to remove after the demonstration."
+}
+2026-09-26 13:55:38,846 INFO jira_conf.release_agent: Processing PG2-13
+2026-09-26 13:55:44,150 WARNING jira_conf.release_agent: Failed to parse PG2-20 (attempt 3)
+2026-09-26 13:55:44,151 ERROR jira_conf.release_agent: Max attempts exceeded for PG2-20; response={
+    "label":"Task",
+    "ticket_number":"PG2-20",
+    "description":"Demo ticket created by JiraConf. This ticket is safe to remove after the demonstration."
+}
+2026-09-26 13:55:44,152 INFO jira_conf.release_agent: Processing PG2-12
+2026-09-26 13:55:49,356 WARNING jira_conf.release_agent: Failed to parse PG2-19 (attempt 3)
+2026-09-26 13:55:49,357 ERROR jira_conf.release_agent: Max attempts exceeded for PG2-19; response={
+    "label":"Task",
+    "ticket_number":"PG2-19",
+    "description":"Demo ticket created by JiraConf. This ticket is safe to remove after the demonstration."
+}
+2026-09-26 13:55:49,358 INFO jira_conf.release_agent: Processing PG2-11
+2026-09-26 13:55:54,600 WARNING jira_conf.release_agent: Failed to parse PG2-18 (attempt 3)
+2026-09-26 13:55:54,601 ERROR jira_conf.release_agent: Max attempts exceeded for PG2-18; response={
+    "label":"Task",
+    "ticket_number":"PG2-18",
+    "description":"Demo ticket created by JiraConf. This ticket is safe to remove after the demonstration."
+}
+2026-09-26 13:55:54,601 INFO jira_conf.release_agent: Processing PG2-10
+2026-09-26 13:55:59,942 WARNING jira_conf.release_agent: Failed to parse PG2-17 (attempt 3)
+2026-09-26 13:55:59,943 ERROR jira_conf.release_agent: Max attempts exceeded for PG2-17; response={
+    "label":"Task",
+    "ticket_number":"PG2-17",
+    "description":"Demo ticket created by JiraConf. This ticket is safe to remove after the demonstration."
+}
+2026-09-26 13:55:59,944 INFO jira_conf.release_agent: Processing PG2-9
+2026-09-26 13:56:05,484 WARNING jira_conf.release_agent: Failed to parse PG2-16 (attempt 3)
+2026-09-26 13:56:05,486 ERROR jira_conf.release_agent: Max attempts exceeded for PG2-16; response={
+    "label":"Task",
+    "ticket_number":"PG2-16",
+    "description":"Demo ticket created by JiraConf. This ticket is safe to remove after the demonstration."
+}
+2026-09-26 13:56:05,486 INFO jira_conf.release_agent: Processing PG2-8
+2026-09-26 13:56:10,949 WARNING jira_conf.release_agent: Failed to parse PG2-15 (attempt 1)
+2026-09-26 13:56:16,513 WARNING jira_conf.release_agent: Failed to parse PG2-14 (attempt 1)
+2026-09-26 13:56:21,925 WARNING jira_conf.release_agent: Failed to parse PG2-13 (attempt 1)
+2026-09-26 13:56:27,256 WARNING jira_conf.release_agent: Failed to parse PG2-12 (attempt 1)
+2026-09-26 13:56:33,261 WARNING jira_conf.release_agent: Failed to parse PG2-11 (attempt 1)
+2026-09-26 13:56:38,829 WARNING jira_conf.release_agent: Failed to parse PG2-10 (attempt 1)
+2026-09-26 13:56:44,294 WARNING jira_conf.release_agent: Failed to parse PG2-9 (attempt 1)
+2026-09-26 13:56:49,792 WARNING jira_conf.release_agent: Failed to parse PG2-8 (attempt 1)
+2026-09-26 13:56:55,152 WARNING jira_conf.release_agent: Failed to parse PG2-15 (attempt 2)
+2026-09-26 13:57:00,458 WARNING jira_conf.release_agent: Failed to parse PG2-14 (attempt 2)
+2026-09-26 13:57:05,877 WARNING jira_conf.release_agent: Failed to parse PG2-13 (attempt 2)
+2026-09-26 13:57:11,150 WARNING jira_conf.release_agent: Failed to parse PG2-12 (attempt 2)
+2026-09-26 13:57:16,423 WARNING jira_conf.release_agent: Failed to parse PG2-11 (attempt 2)
+2026-09-26 13:57:21,707 WARNING jira_conf.release_agent: Failed to parse PG2-10 (attempt 2)
+2026-09-26 13:57:26,899 WARNING jira_conf.release_agent: Failed to parse PG2-9 (attempt 2)
+2026-09-26 13:57:31,798 WARNING jira_conf.release_agent: Failed to parse PG2-8 (attempt 2)
+2026-09-26 13:57:36,652 WARNING jira_conf.release_agent: Failed to parse PG2-15 (attempt 3)
+2026-09-26 13:57:36,653 ERROR jira_conf.release_agent: Max attempts exceeded for PG2-15; response={
+    "label":"Task",
+    "ticket_number":"PG2-15",
+    "description":"Demo ticket created by JiraConf. This ticket is safe to remove after the demonstration."
+}
+2026-09-26 13:57:36,653 INFO jira_conf.release_agent: Processing PG2-7
+2026-09-26 13:57:41,702 WARNING jira_conf.release_agent: Failed to parse PG2-14 (attempt 3)
+2026-09-26 13:57:41,703 ERROR jira_conf.release_agent: Max attempts exceeded for PG2-14; response={
+    "label":"Task",
+    "ticket_number":"PG2-14",
+    "description":"Demo ticket created by JiraConf. This ticket is safe to remove after the demonstration."
+}
+2026-09-26 13:57:41,703 INFO jira_conf.release_agent: Processing PG2-6
+2026-09-26 13:57:46,695 WARNING jira_conf.release_agent: Failed to parse PG2-13 (attempt 3)
+2026-09-26 13:57:46,695 ERROR jira_conf.release_agent: Max attempts exceeded for PG2-13; response={
+    "label":"Task",
+    "ticket_number":"PG2-13",
+    "description":"Demo ticket created by JiraConf. This ticket is safe to remove after the demonstration."
+}
+2026-09-26 13:57:46,696 INFO jira_conf.release_agent: Processing PG2-5
+2026-09-26 13:57:51,579 WARNING jira_conf.release_agent: Failed to parse PG2-12 (attempt 3)
+2026-09-26 13:57:51,580 ERROR jira_conf.release_agent: Max attempts exceeded for PG2-12; response={
+    "label":"Task",
+    "ticket_number":"PG2-12",
+    "description":"Demo ticket created by JiraConf. This ticket is safe to remove after the demonstration."
+}
+2026-09-26 13:57:51,581 INFO jira_conf.release_agent: Processing PG2-4
+2026-09-26 13:57:56,491 WARNING jira_conf.release_agent: Failed to parse PG2-11 (attempt 3)
+2026-09-26 13:57:56,492 ERROR jira_conf.release_agent: Max attempts exceeded for PG2-11; response={
+    "label":"Task",
+    "ticket_number":"PG2-11",
+    "description":"Demo ticket created by JiraConf. This ticket is safe to remove after the demonstration."
+}
+2026-09-26 13:57:56,492 INFO jira_conf.release_agent: Processing PG2-3
+2026-09-26 13:58:01,383 WARNING jira_conf.release_agent: Failed to parse PG2-10 (attempt 3)
+2026-09-26 13:58:01,384 ERROR jira_conf.release_agent: Max attempts exceeded for PG2-10; response={
+    "label":"Task",
+    "ticket_number":"PG2-10",
+    "description":"Demo ticket created by JiraConf. This ticket is safe to remove after the demonstration."
+}
+2026-09-26 13:58:01,384 INFO jira_conf.release_agent: Processing PG2-2
+2026-09-26 13:58:06,372 WARNING jira_conf.release_agent: Failed to parse PG2-9 (attempt 3)
+2026-09-26 13:58:06,373 ERROR jira_conf.release_agent: Max attempts exceeded for PG2-9; response={
+    "label":"Task",
+    "ticket_number":"PG2-9",
+    "description":"Demo ticket created by JiraConf. This ticket is safe to remove after the demonstration."
+}
+2026-09-26 13:58:06,374 INFO jira_conf.release_agent: Processing PG2-1
+2026-09-26 13:58:11,189 WARNING jira_conf.release_agent: Failed to parse PG2-8 (attempt 3)
+2026-09-26 13:58:11,190 ERROR jira_conf.release_agent: Max attempts exceeded for PG2-8; response={
+    "label":"Task",
+    "ticket_number":"PG2-8",
+    "description":"Demo ticket created by JiraConf. This ticket is safe to remove after the demonstration."
+}
+2026-09-26 13:58:16,260 WARNING jira_conf.release_agent: Failed to parse PG2-7 (attempt 1)
+2026-09-26 13:58:21,171 WARNING jira_conf.release_agent: Failed to parse PG2-6 (attempt 1)
+2026-09-26 13:58:26,008 WARNING jira_conf.release_agent: Failed to parse PG2-5 (attempt 1)
+2026-09-26 13:58:31,050 WARNING jira_conf.release_agent: Failed to parse PG2-4 (attempt 1)
+2026-09-26 13:58:36,299 WARNING jira_conf.release_agent: Failed to parse PG2-3 (attempt 1)
+2026-09-26 13:58:42,460 WARNING jira_conf.release_agent: Failed to parse PG2-2 (attempt 1)
+2026-09-26 13:58:48,245 WARNING jira_conf.release_agent: Failed to parse PG2-1 (attempt 1)
+2026-09-26 13:58:53,817 WARNING jira_conf.release_agent: Failed to parse PG2-7 (attempt 2)
+2026-09-26 13:58:59,651 WARNING jira_conf.release_agent: Failed to parse PG2-6 (attempt 2)
+2026-09-26 13:59:05,068 WARNING jira_conf.release_agent: Failed to parse PG2-5 (attempt 2)
+2026-09-26 13:59:10,340 WARNING jira_conf.release_agent: Failed to parse PG2-4 (attempt 2)
+2026-09-26 13:59:15,141 WARNING jira_conf.release_agent: Failed to parse PG2-3 (attempt 2)
+2026-09-26 13:59:20,220 WARNING jira_conf.release_agent: Failed to parse PG2-2 (attempt 2)
+2026-09-26 13:59:25,505 WARNING jira_conf.release_agent: Failed to parse PG2-1 (attempt 2)
+2026-09-26 13:59:30,509 WARNING jira_conf.release_agent: Failed to parse PG2-7 (attempt 3)
+2026-09-26 13:59:30,510 ERROR jira_conf.release_agent: Max attempts exceeded for PG2-7; response={
+    "label":"Task",
+    "ticket_number":"PG2-7",
+    "description":"Demo ticket created by JiraConf. This ticket is safe to remove after the demonstration."
+}
+2026-09-26 13:59:35,570 WARNING jira_conf.release_agent: Failed to parse PG2-6 (attempt 3)
+2026-09-26 13:59:35,571 ERROR jira_conf.release_agent: Max attempts exceeded for PG2-6; response={
+    "label":"Task",
+    "ticket_number":"PG2-6",
+    "description":"Demo ticket created by JiraConf. This ticket is safe to remove after the demonstration."
+}
+2026-09-26 13:59:40,720 WARNING jira_conf.release_agent: Failed to parse PG2-5 (attempt 3)
+2026-09-26 13:59:40,720 ERROR jira_conf.release_agent: Max attempts exceeded for PG2-5; response={
+    "label":"Task",
+    "ticket_number":"PG2-5",
+    "description":"Demo ticket created by JiraConf. This ticket is safe to remove after the demonstration."
+}
+2026-09-26 13:59:45,577 WARNING jira_conf.release_agent: Failed to parse PG2-4 (attempt 3)
+2026-09-26 13:59:45,578 ERROR jira_conf.release_agent: Max attempts exceeded for PG2-4; response={
+    "label":"Task",
+    "ticket_number":"PG2-4",
+    "description":"Demo ticket created by JiraConf. This ticket is safe to remove after the demonstration."
+}
+2026-09-26 13:59:50,420 WARNING jira_conf.release_agent: Failed to parse PG2-3 (attempt 3)
+2026-09-26 13:59:50,421 ERROR jira_conf.release_agent: Max attempts exceeded for PG2-3; response={
+    "label":"Task",
+    "ticket_number":"PG2-3",
+    "description":"Demo ticket created by JiraConf. This ticket is safe to remove after the demonstration."
+}
+2026-09-26 13:59:55,557 WARNING jira_conf.release_agent: Failed to parse PG2-2 (attempt 3)
+2026-09-26 13:59:55,557 ERROR jira_conf.release_agent: Max attempts exceeded for PG2-2; response={
+    "label":"Task",
+    "ticket_number":"PG2-2",
+    "description":"Demo ticket created by JiraConf. This ticket is safe to remove after the demonstration."
+}
+2026-09-26 14:00:00,702 WARNING jira_conf.release_agent: Failed to parse PG2-1 (attempt 3)
+2026-09-26 14:00:00,703 ERROR jira_conf.release_agent: Max attempts exceeded for PG2-1; response={
+    "label":"Task",
+    "ticket_number":"PG2-1",
+    "description":"Demo ticket created by JiraConf. This ticket is safe to remove after the demonstration."
+}
+2026-09-26 14:00:26,031 INFO jira_conf: Starting JiraConf AI
+2026-09-26 14:00:26,032 DEBUG jira_conf: Fetching boards list from Jira
+2026-09-26 14:00:26,835 INFO jira_conf: Processing sprint: PG2 Sprint 1
+2026-09-26 14:00:27,949 INFO jira_conf: Found 24 done tickets for sprint PG2 Sprint 1
+2026-09-26 14:00:34,655 DEBUG jira_conf.planner: Planner response: {'action': 'FETCH_TICKETS', 'reason': 'No specific reason provided, proceeding to fetch tickets as the first action.'}
+2026-09-26 14:00:34,655 INFO jira_conf.workflow: Workflow step 1: FETCH_TICKETS
+2026-09-26 14:00:39,500 DEBUG jira_conf.planner: Planner response: {'action': 'INSPECT_CONFLUENCE', 'reason': 'To identify where to place the fetched tickets, inspection of Confluence is required.'}
+2026-09-26 14:00:39,500 INFO jira_conf.workflow: Workflow step 2: INSPECT_CONFLUENCE
+2026-09-26 14:00:44,343 DEBUG jira_conf.planner: Planner response: {'action': 'GENERATE_RELEASE_NOTES', 'reason': ''}
+2026-09-26 14:00:44,343 INFO jira_conf.workflow: Workflow step 3: GENERATE_RELEASE_NOTES
+2026-09-26 14:00:44,344 INFO jira_conf.release_agent: Processing PG2-24
+2026-09-26 14:00:44,345 INFO jira_conf.release_agent: Processing PG2-23
+2026-09-26 14:00:44,345 INFO jira_conf.release_agent: Processing PG2-22
+2026-09-26 14:00:44,346 INFO jira_conf.release_agent: Processing PG2-21
+2026-09-26 14:00:44,346 INFO jira_conf.release_agent: Processing PG2-20
+2026-09-26 14:00:44,347 INFO jira_conf.release_agent: Processing PG2-19
+2026-09-26 14:00:44,347 INFO jira_conf.release_agent: Processing PG2-18
+2026-09-26 14:00:44,348 INFO jira_conf.release_agent: Processing PG2-17
+2026-09-26 14:00:48,944 INFO jira_conf.release_agent: Processing PG2-16
+2026-09-26 14:00:54,396 INFO jira_conf.release_agent: Processing PG2-15
+2026-09-26 14:01:00,082 INFO jira_conf.release_agent: Processing PG2-14
+2026-09-26 14:01:06,056 INFO jira_conf.release_agent: Processing PG2-13
+2026-09-26 14:01:11,595 INFO jira_conf.release_agent: Processing PG2-12
+2026-09-26 14:01:16,986 INFO jira_conf.release_agent: Processing PG2-11
+2026-09-26 14:01:22,273 INFO jira_conf.release_agent: Processing PG2-10
+2026-09-26 14:01:28,157 INFO jira_conf.release_agent: Processing PG2-9
+2026-09-26 14:01:33,826 INFO jira_conf.release_agent: Processing PG2-8
+2026-09-26 14:01:39,691 INFO jira_conf.release_agent: Processing PG2-7
+2026-09-26 14:01:45,626 INFO jira_conf.release_agent: Processing PG2-6
+2026-09-26 14:01:51,097 INFO jira_conf.release_agent: Processing PG2-5
+2026-09-26 14:01:56,816 INFO jira_conf.release_agent: Processing PG2-4
+2026-09-26 14:02:02,026 INFO jira_conf.release_agent: Processing PG2-3
+2026-09-26 14:02:07,181 INFO jira_conf.release_agent: Processing PG2-2
+2026-09-26 14:02:12,205 INFO jira_conf.release_agent: Processing PG2-1
+2026-09-26 14:02:56,405 DEBUG jira_conf.planner: Planner response: {'action': 'GENERATE_RELEASE_NOTES', 'reason': ''}
+2026-09-26 14:02:56,406 INFO jira_conf.workflow: Workflow step 4: REVIEW_RELEASE_NOTES
+2026-09-26 14:03:13,017 DEBUG jira_conf.planner: Planner response: {'action': 'REVIEW_RELEASE_NOTES', 'reason': 'Review failed and suggestions provided for improvement.'}
+2026-09-26 14:03:13,017 INFO jira_conf.workflow: Workflow step 5: FINISH
+2026-09-26 14:03:13,017 INFO jira_conf: Workflow finished for PG2 Sprint 1 with stage=finished
+2026-09-26 14:06:53,881 INFO jira_conf: Starting JiraConf AI
+2026-09-26 14:06:53,882 DEBUG jira_conf: Fetching boards list from Jira
+2026-09-26 14:06:54,705 INFO jira_conf: Processing sprint: PG2 Sprint 1
+2026-09-26 14:06:55,568 INFO jira_conf: Found 24 done tickets for sprint PG2 Sprint 1
+2026-09-26 14:07:01,160 DEBUG jira_conf.planner: Planner response: {'action': 'FETCH_TICKETS', 'reason': 'To ensure all tickets are available for review and processing, fetching them is the next step.'}
+2026-09-26 14:07:01,161 INFO jira_conf.workflow: Workflow step 1: FETCH_TICKETS
+2026-09-26 14:07:05,843 DEBUG jira_conf.planner: Planner response: {'action': 'INSPECT_CONFLUENCE', 'reason': 'To identify where to place the fetched tickets, inspection of Confluence is required.'}
+2026-09-26 14:07:05,844 INFO jira_conf.workflow: Workflow step 2: INSPECT_CONFLUENCE
+2026-09-26 14:07:11,258 DEBUG jira_conf.planner: Planner response: {'action': 'GENERATE_RELEASE_NOTES', 'reason': 'Inspected Confluence and found 24 issues, no release notes generated yet.'}
+2026-09-26 14:07:11,258 INFO jira_conf.workflow: Workflow step 3: GENERATE_RELEASE_NOTES
+2026-09-26 14:07:11,259 INFO jira_conf.release_agent: Processing PG2-24
+2026-09-26 14:07:11,260 INFO jira_conf.release_agent: Processing PG2-23
+2026-09-26 14:07:11,260 INFO jira_conf.release_agent: Processing PG2-22
+2026-09-26 14:07:11,261 INFO jira_conf.release_agent: Processing PG2-21
+2026-09-26 14:07:11,261 INFO jira_conf.release_agent: Processing PG2-20
+2026-09-26 14:07:11,262 INFO jira_conf.release_agent: Processing PG2-19
+2026-09-26 14:07:11,262 INFO jira_conf.release_agent: Processing PG2-18
+2026-09-26 14:07:11,262 INFO jira_conf.release_agent: Processing PG2-17
+2026-09-26 14:07:15,611 INFO jira_conf.release_agent: Processing PG2-16
+2026-09-26 14:07:20,598 INFO jira_conf.release_agent: Processing PG2-15
+2026-09-26 14:07:25,560 INFO jira_conf.release_agent: Processing PG2-14
+2026-09-26 14:07:30,599 INFO jira_conf.release_agent: Processing PG2-13
+2026-09-26 14:07:35,722 INFO jira_conf.release_agent: Processing PG2-12
+2026-09-26 14:07:40,708 INFO jira_conf.release_agent: Processing PG2-11
+2026-09-26 14:07:45,676 INFO jira_conf.release_agent: Processing PG2-10
+2026-09-26 14:07:50,715 INFO jira_conf.release_agent: Processing PG2-9
+2026-09-26 14:07:55,655 INFO jira_conf.release_agent: Processing PG2-8
+2026-09-26 14:08:00,657 INFO jira_conf.release_agent: Processing PG2-7
+2026-09-26 14:08:05,740 INFO jira_conf.release_agent: Processing PG2-6
+2026-09-26 14:08:10,859 INFO jira_conf.release_agent: Processing PG2-5
+2026-09-26 14:08:16,216 INFO jira_conf.release_agent: Processing PG2-4
+2026-09-26 14:08:21,287 INFO jira_conf.release_agent: Processing PG2-3
+2026-09-26 14:08:26,246 INFO jira_conf.release_agent: Processing PG2-2
+2026-09-26 14:08:31,181 INFO jira_conf.release_agent: Processing PG2-1
+2026-09-26 14:09:16,038 DEBUG jira_conf.planner: Planner response: {'action': 'GENERATE_RELEASE_NOTES', 'reason': 'Next step in the workflow is to generate release notes.'}
+2026-09-26 14:09:16,039 INFO jira_conf.workflow: Workflow step 4: REVIEW_RELEASE_NOTES
+2026-09-26 14:09:31,915 DEBUG jira_conf.planner: Planner response: {'action': 'GENERATE_RELEASE_NOTES', 'reason': 'Next step in the workflow is to generate release notes.'}
+2026-09-26 14:09:31,915 INFO jira_conf.workflow: Workflow step 5: UPLOAD_CONFLUENCE
+2026-09-26 14:09:32,559 INFO jira_conf.confluence: Release_Note_PG2 Sprint 1 already exists.
+2026-09-26 14:09:49,778 ERROR jira_conf.workflow: UPLOAD_CONFLUENCE failed: org.springframework.http.converter.HttpMessageNotReadableException: Required request body is missing: public com.atlassian.confluence.api.model.content.Content com.atlassian.confluence.internal.springrest.features.v1.content.ContentController.update(com.atlassian.confluence.api.model.content.id.ContentId,com.atlassian.confluence.api.model.content.ContentStatus,com.atlassian.confluence.api.model.content.Content) throws com.atlassian.confluence.api.service.exceptions.ecosystem.ServiceException
+Traceback (most recent call last):
+  File "C:\Users\pragu\OneDrive\Desktop\JiraConf\agents\workflow_agent.py", line 90, in run
+    result = tools[action](sprint, state)
+  File "C:\Users\pragu\OneDrive\Desktop\JiraConf\agents\workflow_agent.py", line 202, in _upload_confluence
+    self.confluence.create_or_update_page(title, html)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\pragu\OneDrive\Desktop\JiraConf\agents\confluence_agent.py", line 105, in create_or_update_page
+    self.client.put(
+    ~~~~~~~~~~~~~~~^
+        f"rest/api/content/{page['id']}",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<10 lines>...
+        },
+        ^^
+    )
+    ^
+  File "C:\Users\pragu\OneDrive\Desktop\JiraConf\.venv\Lib\site-packages\atlassian\rest_client.py", line 966, in put
+    response = self.request(
+        "PUT",
+    ...<7 lines>...
+        advanced_mode=advanced_mode,
+    )
+  File "C:\Users\pragu\OneDrive\Desktop\JiraConf\.venv\Lib\site-packages\atlassian\rest_client.py", line 590, in request
+    self.raise_for_status(response)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\pragu\OneDrive\Desktop\JiraConf\.venv\Lib\site-packages\atlassian\confluence\base.py", line 270, in raise_for_status
+    raise HTTPError("\n".join(dict.fromkeys(messages)), response=response)
+requests.exceptions.HTTPError: org.springframework.http.converter.HttpMessageNotReadableException: Required request body is missing: public com.atlassian.confluence.api.model.content.Content com.atlassian.confluence.internal.springrest.features.v1.content.ContentController.update(com.atlassian.confluence.api.model.content.id.ContentId,com.atlassian.confluence.api.model.content.ContentStatus,com.atlassian.confluence.api.model.content.Content) throws com.atlassian.confluence.api.service.exceptions.ecosystem.ServiceException
+2026-09-26 14:09:54,626 DEBUG jira_conf.planner: Planner response: {'action': 'UPLOAD_CONFLUENCE', 'reason': 'Upload failed with error: Required request body is missing'}
+2026-09-26 14:09:54,626 INFO jira_conf.workflow: Workflow step 6: FINISH
+2026-09-26 14:09:54,626 INFO jira_conf: Workflow finished for PG2 Sprint 1 with stage=finished
+2026-09-26 14:14:09,875 INFO jira_conf: Starting JiraConf AI
+2026-09-26 14:14:09,875 DEBUG jira_conf: Fetching boards list from Jira
+2026-09-26 14:14:10,569 INFO jira_conf: Processing sprint: PG2 Sprint 1
+2026-09-26 14:14:11,471 INFO jira_conf: Found 24 done tickets for sprint PG2 Sprint 1
+2026-09-26 14:14:17,227 DEBUG jira_conf.planner: Planner response: {'action': 'FETCH_TICKETS', 'reason': "To prepare for the release, it's necessary to fetch any pending tickets first."}
+2026-09-26 14:14:17,228 INFO jira_conf.workflow: Workflow step 1: FETCH_TICKETS
+2026-09-26 14:14:21,940 DEBUG jira_conf.planner: Planner response: {'action': 'INSPECT_CONFLUENCE', 'reason': 'To identify where to place the fetched tickets, inspection of Confluence is required.'}
+2026-09-26 14:14:21,940 INFO jira_conf.workflow: Workflow step 2: INSPECT_CONFLUENCE
+2026-09-26 14:14:27,230 DEBUG jira_conf.planner: Planner response: {'action': 'GENERATE_RELEASE_NOTES', 'reason': 'Inspected Confluence and found 24 issues, ready to generate release notes.'}
+2026-09-26 14:14:27,230 INFO jira_conf.workflow: Workflow step 3: GENERATE_RELEASE_NOTES
+2026-09-26 14:14:27,231 INFO jira_conf.release_agent: Processing PG2-24
+2026-09-26 14:14:27,231 INFO jira_conf.release_agent: Processing PG2-23
+2026-09-26 14:14:27,232 INFO jira_conf.release_agent: Processing PG2-22
+2026-09-26 14:14:27,233 INFO jira_conf.release_agent: Processing PG2-21
+2026-09-26 14:14:27,233 INFO jira_conf.release_agent: Processing PG2-20
+2026-09-26 14:14:27,233 INFO jira_conf.release_agent: Processing PG2-19
+2026-09-26 14:14:27,234 INFO jira_conf.release_agent: Processing PG2-18
+2026-09-26 14:14:27,234 INFO jira_conf.release_agent: Processing PG2-17
+2026-09-26 14:14:31,587 INFO jira_conf.release_agent: Processing PG2-16
+2026-09-26 14:14:36,664 INFO jira_conf.release_agent: Processing PG2-15
+2026-09-26 14:14:41,731 INFO jira_conf.release_agent: Processing PG2-14
+2026-09-26 14:14:46,746 INFO jira_conf.release_agent: Processing PG2-13
+2026-09-26 14:14:51,791 INFO jira_conf.release_agent: Processing PG2-12
+2026-09-26 14:14:56,735 INFO jira_conf.release_agent: Processing PG2-11
+2026-09-26 14:15:01,722 INFO jira_conf.release_agent: Processing PG2-10
+2026-09-26 14:15:08,232 INFO jira_conf.release_agent: Processing PG2-9
+2026-09-26 14:15:13,321 INFO jira_conf.release_agent: Processing PG2-8
+2026-09-26 14:15:18,338 INFO jira_conf.release_agent: Processing PG2-7
+2026-09-26 14:15:23,372 INFO jira_conf.release_agent: Processing PG2-6
+2026-09-26 14:15:28,418 INFO jira_conf.release_agent: Processing PG2-5
+2026-09-26 14:15:33,431 INFO jira_conf.release_agent: Processing PG2-4
+2026-09-26 14:15:38,388 INFO jira_conf.release_agent: Processing PG2-3
+2026-09-26 14:15:43,421 INFO jira_conf.release_agent: Processing PG2-2
+2026-09-26 14:15:48,358 INFO jira_conf.release_agent: Processing PG2-1
+2026-09-26 14:16:32,267 DEBUG jira_conf.planner: Planner response: {'action': 'GENERATE_RELEASE_NOTES', 'reason': ''}
+2026-09-26 14:16:32,267 INFO jira_conf.workflow: Workflow step 4: REVIEW_RELEASE_NOTES
+2026-09-26 14:16:50,100 DEBUG jira_conf.planner: Planner response: {'action': 'REVIEW_RELEASE_NOTES', 'reason': 'Review mode is valid and no further actions are required before finishing the workflow.'}
+2026-09-26 14:16:50,101 INFO jira_conf.workflow: Workflow step 5: UPLOAD_CONFLUENCE
+2026-09-26 14:16:50,736 INFO jira_conf.confluence: Release_Note_PG2 Sprint 1 already exists.
+2026-09-26 14:17:01,617 INFO jira_conf.confluence: Page Updated: Release_Note_PG2 Sprint 1
+2026-09-26 14:17:06,260 DEBUG jira_conf.planner: Planner response: {'action': 'REVIEW_RELEASE_NOTES', 'reason': 'Review mode is active and all release notes are valid.'}
+2026-09-26 14:17:06,260 INFO jira_conf.workflow: Workflow step 6: FINISH
+2026-09-26 14:17:06,261 INFO jira_conf: Workflow finished for PG2 Sprint 1 with stage=finished
+2026-09-26 14:23:08,945 INFO jira_conf: Starting JiraConf AI
+2026-09-26 14:23:08,945 DEBUG jira_conf: Fetching boards list from Jira
+2026-09-26 14:23:09,620 INFO jira_conf: Processing sprint: PG2 Sprint 1
+2026-09-26 14:23:10,470 INFO jira_conf: Found 24 done tickets for sprint PG2 Sprint 1
+2026-09-26 14:23:11,419 INFO jira_conf: Skipping sprint PG2 Sprint 1: page has 24 items, issues 24
+2026-09-26 14:24:09,650 INFO jira_conf: Starting JiraConf AI
+2026-09-26 14:24:09,650 DEBUG jira_conf: Fetching boards list from Jira
+2026-09-26 14:24:10,423 INFO jira_conf: Processing sprint: PG2 Sprint 2
+2026-09-26 14:24:11,122 INFO jira_conf: Found 1 done tickets for sprint PG2 Sprint 2
+2026-09-26 14:24:20,117 DEBUG jira_conf.planner: Planner response: {'action': 'FETCH_TICKETS', 'reason': 'No other actions are available until tickets are fetched.'}
+2026-09-26 14:24:20,117 INFO jira_conf.workflow: Workflow step 1: FETCH_TICKETS
+2026-09-26 14:24:24,887 DEBUG jira_conf.planner: Planner response: {'action': 'INSPECT_CONFLUENCE', 'reason': 'No issues fetched, need to inspect Confluence for the fetched issue.'}
+2026-09-26 14:24:24,887 INFO jira_conf.workflow: Workflow step 2: INSPECT_CONFLUENCE
+2026-09-26 14:24:29,836 DEBUG jira_conf.planner: Planner response: {'action': 'GENERATE_RELEASE_NOTES', 'reason': 'Inspected Confluence shows no issues, proceeding to generate release notes.'}
+2026-09-26 14:24:29,836 INFO jira_conf.workflow: Workflow step 3: GENERATE_RELEASE_NOTES
+2026-09-26 14:24:29,837 INFO jira_conf.release_agent: Processing PG2-25
+2026-09-26 14:24:38,675 DEBUG jira_conf.planner: Planner response: {'action': 'GENERATE_RELEASE_NOTES', 'reason': ''}
+2026-09-26 14:24:38,675 INFO jira_conf.workflow: Workflow step 4: REVIEW_RELEASE_NOTES
+2026-09-26 14:24:48,973 DEBUG jira_conf.planner: Planner response: {'action': 'UPLOAD_CONFLUENCE', 'reason': 'No Confluence page exists, need to create and upload release notes.'}
+2026-09-26 14:24:48,973 INFO jira_conf.workflow: Workflow step 5: UPLOAD_CONFLUENCE
+2026-09-26 14:24:50,204 INFO jira_conf.confluence: Page Created: Release_Note_PG2 Sprint 2
+2026-09-26 14:24:54,545 DEBUG jira_conf.planner: Planner response: {'action': 'UPLOAD_CONFLUENCE', 'reason': 'Page exists and all required steps are completed.'}
+2026-09-26 14:24:54,545 INFO jira_conf.workflow: Workflow step 6: FINISH
+2026-09-26 14:24:54,545 INFO jira_conf: Workflow finished for PG2 Sprint 2 with stage=finished

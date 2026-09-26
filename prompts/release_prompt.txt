@@ -18,11 +18,7 @@ The JSON format must be:
 
 Rules
 
-- Label can only be:
-  - Feature
-  - Bug Fix
-  - Improvement
-  - Security
+- Label can be any non-empty label that best matches the ticket.
 
 - Description should be customer friendly.
 

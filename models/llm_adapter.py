@@ -8,6 +8,8 @@ import os
 
 from .local_llm import LocalLLM
 from .remote_llm import RemoteLLM
+from .gemini_llm import GeminiLLM
+from .ollama_llm import OllamaLLM
 
 
 class LLMAdapter:
@@ -18,7 +20,11 @@ class LLMAdapter:
 
         provider = os.getenv("LLM_PROVIDER", "local").lower()
 
-        if provider == "remote":
+        if provider == "ollama":
+            self._impl = OllamaLLM()
+        elif provider == "gemini":
+            self._impl = GeminiLLM()
+        elif provider == "remote":
             self._impl = RemoteLLM()
         else:
             self._impl = LocalLLM()

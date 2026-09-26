@@ -8,8 +8,7 @@ from agents.release_agent import ReleaseAgent
 from agents.confluence_agent import ConfluenceAgent
 from agents.planner_agent import PlannerAgent
 from agents.reviewer_agent import ReviewerAgent
-
-from services.html_builder import HTMLBuilder
+from agents.workflow_agent import WorkflowAgent
 
 
 def main():
@@ -147,7 +146,7 @@ def main():
         logger.info(f"Found {len(issues)} done tickets for sprint {sprint.name}")
 
         if len(issues) == 0:
-            print("No Done tickets found for sprint {sprint.name}.")
+            print(f"No Done tickets found for sprint {sprint.name}.")
             continue
         title = f"Release_Note_{sprint.name}"
 
@@ -164,130 +163,19 @@ def main():
             print(f"Existing release notes found with {page_count} items; {len(issues)} done tickets found. Will update page.")
 
         context = {
-            "stage": "start",
             "issues_count": len(issues),
             "sprint": sprint.name,
             "page_exists": bool(page),
-            "page_count": page_count
+            "page_count": page_count,
+            "issues": issues,
         }
 
-        # If page exists but is missing tickets, or page is missing, force generation
-        initial_action = None
-        if page and page_count < len(issues):
-            initial_action = "GENERATE_RELEASE_NOTES"
-        # If no page exists at all, we should generate release notes
         if not page:
-            print(f"No Confluence page found for {sprint.name}; forcing generation")
-            logger.info(f"No Confluence page found for {sprint.name}; will generate")
-            initial_action = "GENERATE_RELEASE_NOTES"
+            print(f"No Confluence page found for {sprint.name}; planner will decide the next action")
 
-        fallback = [
-            "GENERATE_RELEASE_NOTES",
-            "REVIEW_RELEASE_NOTES",
-            "UPLOAD_CONFLUENCE",
-            "FINISH"
-        ]
-
-        fallback_idx = 0
-
-        release_notes = []
-
-        while True:
-
-            # if we have an enforced initial action, use it first
-            if initial_action:
-                action = initial_action
-                logger.debug(f"Forcing initial action: {action}")
-                initial_action = None
-            else:
-                try:
-                    decision = planner.next_action(context)
-                    action = decision.get("action") if isinstance(decision, dict) else None
-                except Exception:
-                    action = None
-
-                # If planner asks to generate but we've already progressed past generation,
-                # map to the appropriate next step to avoid repeated generate loops.
-                if action == "GENERATE_RELEASE_NOTES" and context.get("stage") in ("generated", "reviewed", "uploaded"):
-                    stage = context.get("stage")
-                    logger.debug(f"Planner requested GENERATE but stage is '{stage}'; remapping action")
-                    if stage == "generated":
-                        action = "REVIEW_RELEASE_NOTES"
-                    elif stage == "reviewed":
-                        action = "UPLOAD_CONFLUENCE"
-                    else:
-                        action = "FINISH"
-
-                if action is None:
-                    action = fallback[fallback_idx]
-            print(f"Planner decided: {action}")
-
-            if action == "GENERATE_RELEASE_NOTES":
-
-                logger.info("Action=GENERATE_RELEASE_NOTES")
-                print("Generating Release Notes...\n")
-
-                release_notes = release_agent.generate_release_notes(issues)
-
-                context["release_notes_count"] = len(release_notes)
-                # mark that generation completed so planner has context
-                context["stage"] = "generated"
-                # force the next loop iteration to review the generated notes
-                initial_action = "REVIEW_RELEASE_NOTES"
-
-            elif action == "REVIEW_RELEASE_NOTES":
-
-                logger.info("Action=REVIEW_RELEASE_NOTES")
-                print("Reviewing Release Notes...\n")
-
-                review = reviewer.review(release_notes)
-
-                print("Review result:")
-                print(review)
-                logger.debug(f"Reviewer output: {review}")
-                # If reviewer returns a dict with validation, advance to upload
-                if isinstance(review, dict) and review.get("valid"):
-                    context["stage"] = "reviewed"
-                    logger.info("Review passed validation; scheduling upload")
-                    # force the next loop iteration to upload
-                    initial_action = "UPLOAD_CONFLUENCE"
-                else:
-                    # allow a limited number of regeneration attempts
-                    attempts = context.get("regen_attempts", 0) + 1
-                    context["regen_attempts"] = attempts
-                    if attempts <= 2:
-                        print(f"Review failed or invalid; regenerating (attempt {attempts})")
-                        # force generation next
-                        initial_action = "GENERATE_RELEASE_NOTES"
-                    else:
-                        print("Review failed after retries; finishing to avoid loop.")
-                        initial_action = "FINISH"
-
-            elif action == "UPLOAD_CONFLUENCE":
-
-                logger.info("Action=UPLOAD_CONFLUENCE")
-                print("Uploading to Confluence...\n")
-
-                html = HTMLBuilder.build(sprint.name, release_notes)
-
-                page_title = f"Release_Note_{sprint.name}"
-                logger.debug(f"Uploading page title={page_title}, html length={len(html)}")
-                confluence.create_or_update_page(page_title, html)
-
-                context["stage"] = "uploaded"
-                logger.info(f"Uploaded Confluence page for sprint {sprint.name}")
-                # finish next
-                initial_action = "FINISH"
-
-            elif action == "FINISH":
-
-                print("\nDone!")
-
-                break
-
-            # advance fallback pointer (so if planner fails we'll progress)
-            if fallback_idx < len(fallback) - 1:
-                fallback_idx += 1
+        workflow = WorkflowAgent(jira, confluence, planner, reviewer, release_agent)
+        result = workflow.run(sprint, context)
+        logger.info("Workflow finished for %s with stage=%s", sprint.name, result.get("stage"))
 
     print("All done.")
 
