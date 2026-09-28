@@ -858,3 +858,108 @@ requests.exceptions.HTTPError: org.springframework.http.converter.HttpMessageNot
 2026-09-26 14:24:54,545 DEBUG jira_conf.planner: Planner response: {'action': 'UPLOAD_CONFLUENCE', 'reason': 'Page exists and all required steps are completed.'}
 2026-09-26 14:24:54,545 INFO jira_conf.workflow: Workflow step 6: FINISH
 2026-09-26 14:24:54,545 INFO jira_conf: Workflow finished for PG2 Sprint 2 with stage=finished
+2026-09-26 15:06:56,275 INFO jira_conf: Starting JiraConf AI
+2026-09-26 15:06:56,276 DEBUG jira_conf: Fetching boards list from Jira
+2026-09-26 15:06:56,868 INFO jira_conf: Processing sprint: PG2 Sprint 2
+2026-09-26 15:06:57,721 INFO jira_conf: Found 1 done tickets for sprint PG2 Sprint 2
+2026-09-26 15:06:58,897 INFO jira_conf: Skipping sprint PG2 Sprint 2: page has 1 items, issues 1
+2026-09-26 15:07:57,604 INFO jira_conf: Starting JiraConf AI
+2026-09-26 15:07:57,605 DEBUG jira_conf: Fetching boards list from Jira
+2026-09-26 15:07:58,327 INFO jira_conf: Processing sprint: PG2 Sprint 1
+2026-09-26 15:07:59,162 INFO jira_conf: Found 24 done tickets for sprint PG2 Sprint 1
+2026-09-26 15:08:00,188 INFO jira_conf: Skipping sprint PG2 Sprint 1: page has 24 items, issues 24
+2026-09-26 15:09:33,990 INFO jira_conf: Starting JiraConf AI
+2026-09-26 15:09:33,991 DEBUG jira_conf: Fetching boards list from Jira
+2026-09-26 15:09:34,956 INFO jira_conf: Processing sprint: PG2 Sprint 3
+2026-09-26 15:09:35,923 INFO jira_conf: Found 1 done tickets for sprint PG2 Sprint 3
+2026-09-26 15:09:45,739 DEBUG jira_conf.planner: Planner response: {'action': 'FETCH_TICKETS', 'reason': "To generate accurate release notes, it's necessary to fetch the relevant tickets first."}
+2026-09-26 15:09:45,739 INFO jira_conf.workflow: Workflow step 1: FETCH_TICKETS
+2026-09-26 15:09:50,129 DEBUG jira_conf.planner: Planner response: {'action': 'FETCH_TICKETS', 'reason': 'Tickets are not available yet.'}
+2026-09-26 15:09:50,129 WARNING jira_conf.workflow: Planner selected action FETCH_TICKETS, but its prerequisites are not met
+2026-09-26 15:09:50,130 INFO jira_conf.workflow: Workflow step 2: INSPECT_CONFLUENCE
+2026-09-26 15:09:55,746 DEBUG jira_conf.planner: Planner response: {'action': 'GENERATE_RELEASE_NOTES', 'reason': 'Inspected Confluence and found no existing page for release notes. Generate new release notes.'}
+2026-09-26 15:09:55,746 INFO jira_conf.workflow: Workflow step 3: GENERATE_RELEASE_NOTES
+2026-09-26 15:09:55,747 INFO jira_conf.release_agent: Processing PG2-26
+2026-09-26 15:10:05,875 DEBUG jira_conf.planner: Planner response: {'action': 'GENERATE_RELEASE_NOTES', 'reason': 'No further immediate actions are available before generating release notes.'}
+2026-09-26 15:10:05,875 INFO jira_conf.workflow: Workflow step 4: GENERATE_RELEASE_NOTES
+2026-09-26 15:10:05,876 INFO jira_conf.release_agent: Processing PG2-26
+2026-09-26 15:10:15,962 DEBUG jira_conf.planner: Planner response: {'action': 'GENERATE_RELEASE_NOTES', 'reason': 'No further actions are available until release notes are generated.'}
+2026-09-26 15:10:15,962 INFO jira_conf.workflow: Workflow step 5: GENERATE_RELEASE_NOTES
+2026-09-26 15:10:15,963 INFO jira_conf.release_agent: Processing PG2-26
+2026-09-26 15:10:26,173 DEBUG jira_conf.planner: Planner response: {'action': 'GENERATE_RELEASE_NOTES', 'reason': 'No further actions are available until release notes generation is completed.'}
+2026-09-26 15:10:26,174 INFO jira_conf.workflow: Workflow step 6: GENERATE_RELEASE_NOTES
+2026-09-26 15:10:26,174 INFO jira_conf.release_agent: Processing PG2-26
+2026-09-26 15:10:36,569 DEBUG jira_conf.planner: Planner response: {'action': 'GENERATE_RELEASE_NOTES', 'reason': 'No further actions can be taken without generating release notes.'}
+2026-09-26 15:10:36,569 INFO jira_conf.workflow: Workflow step 7: GENERATE_RELEASE_NOTES
+2026-09-26 15:10:36,570 INFO jira_conf.release_agent: Processing PG2-26
+2026-09-26 15:10:47,135 DEBUG jira_conf.planner: Planner response: {'action': 'UPLOAD_CONFLUENCE', 'reason': 'No issues found to upload, proceed with releasing release notes.'}
+2026-09-26 15:10:47,136 WARNING jira_conf.workflow: Planner selected action UPLOAD_CONFLUENCE, but its prerequisites are not met
+2026-09-26 15:10:47,136 INFO jira_conf.workflow: Workflow step 8: REVIEW_RELEASE_NOTES
+2026-09-26 15:10:58,220 DEBUG jira_conf.planner: Planner response: {'action': 'UPLOAD_CONFLUENCE', 'reason': 'No Confluence page exists, need to upload the release notes.'}
+2026-09-26 15:10:58,220 INFO jira_conf.workflow: Workflow step 9: UPLOAD_CONFLUENCE
+2026-09-26 15:10:59,717 INFO jira_conf.confluence: Page Created: Release_Note_PG2 Sprint 3
+2026-09-26 15:11:04,362 DEBUG jira_conf.planner: Planner response: {'action': 'UPLOAD_CONFLUENCE', 'reason': 'Uploaded release notes to Confluence.'}
+2026-09-26 15:11:04,362 INFO jira_conf.workflow: Workflow step 10: UPLOAD_CONFLUENCE
+2026-09-26 15:11:05,212 INFO jira_conf.confluence: Release_Note_PG2 Sprint 3 already exists.
+2026-09-26 15:11:11,298 INFO jira_conf.confluence: Page Updated: Release_Note_PG2 Sprint 3
+2026-09-26 15:11:15,825 DEBUG jira_conf.planner: Planner response: {'action': 'UPLOAD_CONFLUENCE', 'reason': 'Uploaded release notes to Confluence as the page does not exist yet.'}
+2026-09-26 15:11:15,825 INFO jira_conf.workflow: Workflow step 11: UPLOAD_CONFLUENCE
+2026-09-26 15:11:18,555 INFO jira_conf.confluence: Release_Note_PG2 Sprint 3 already exists.
+2026-09-26 15:11:21,119 INFO jira_conf.confluence: Page Updated: Release_Note_PG2 Sprint 3
+2026-09-26 15:11:25,356 DEBUG jira_conf.planner: Planner response: {'action': 'FETCH_TICKETS', 'reason': 'Tickets need to be fetched for accurate release notes generation.'}
+2026-09-26 15:11:25,356 WARNING jira_conf.workflow: Planner selected action FETCH_TICKETS, but its prerequisites are not met
+2026-09-26 15:11:25,356 INFO jira_conf.workflow: Workflow step 12: VERIFY_CONFLUENCE
+2026-09-26 15:11:25,849 ERROR jira_conf.workflow: Maximum workflow steps (12) reached
+2026-09-26 15:11:25,849 INFO jira_conf: Workflow finished for PG2 Sprint 3 with stage=stopped
+2026-09-26 18:49:09,786 INFO jira_conf: Starting JiraConf AI
+2026-09-26 18:49:09,787 DEBUG jira_conf: Fetching boards list from Jira
+2026-09-26 18:49:10,485 INFO jira_conf: Processing sprint: PG2 Sprint 3
+2026-09-26 18:49:11,587 INFO jira_conf: Found 1 done tickets for sprint PG2 Sprint 3
+2026-09-26 18:49:26,960 DEBUG jira_conf.planner: Planner response: {'action': 'FETCH_TICKETS', 'reason': 'To have the necessary issues for generating release notes.'}
+2026-09-26 18:49:26,961 INFO jira_conf.workflow: Workflow step 1: FETCH_TICKETS
+2026-09-26 18:49:31,234 DEBUG jira_conf.planner: Planner response: {'action': 'FETCH_TICKETS', 'reason': 'Tickets are not available yet.'}
+2026-09-26 18:49:31,234 WARNING jira_conf.workflow: Planner selected action FETCH_TICKETS, but its prerequisites are not met
+2026-09-26 18:49:31,235 INFO jira_conf.workflow: Workflow step 2: INSPECT_CONFLUENCE
+2026-09-26 18:49:36,074 DEBUG jira_conf.planner: Planner response: {'action': 'GENERATE_RELEASE_NOTES', 'reason': 'Generated release notes after inspecting Confluence.'}
+2026-09-26 18:49:36,074 INFO jira_conf.workflow: Workflow step 3: GENERATE_RELEASE_NOTES
+2026-09-26 18:49:36,084 INFO jira_conf.release_agent: Processing PG2-26
+2026-09-26 18:49:46,410 DEBUG jira_conf.planner: Planner response: {'action': 'GENERATE_RELEASE_NOTES', 'reason': 'No available actions can be performed before generating release notes.'}
+2026-09-26 18:49:46,411 WARNING jira_conf.workflow: Planner selected action GENERATE_RELEASE_NOTES, but its prerequisites are not met
+2026-09-26 18:49:46,411 INFO jira_conf.workflow: Workflow step 4: REVIEW_RELEASE_NOTES
+2026-09-26 18:49:57,300 DEBUG jira_conf.planner: Planner response: {'action': 'UPLOAD_CONFLUENCE', 'reason': 'Page exists and release notes are ready for upload.'}
+2026-09-26 18:49:57,300 INFO jira_conf.workflow: Workflow step 5: UPLOAD_CONFLUENCE
+2026-09-26 18:49:58,741 INFO jira_conf.confluence: Page Created: Release_Note_PG2 Sprint 3
+2026-09-26 18:50:04,099 DEBUG jira_conf.planner: Planner response: {'action': 'UPLOAD_CONFLUENCE', 'reason': 'Page exists and release notes are ready for upload.'}
+2026-09-26 18:50:04,099 WARNING jira_conf.workflow: Planner selected action UPLOAD_CONFLUENCE, but its prerequisites are not met
+2026-09-26 18:50:04,100 INFO jira_conf.workflow: Workflow step 6: VERIFY_CONFLUENCE
+2026-09-26 18:50:09,450 DEBUG jira_conf.planner: Planner response: {'action': 'FINISH', 'reason': 'All release notes generation and verification steps have been completed.'}
+2026-09-26 18:50:09,450 INFO jira_conf.workflow: Workflow step 7: FINISH
+2026-09-26 18:50:09,450 INFO jira_conf: Workflow finished for PG2 Sprint 3 with stage=finished
+2026-09-26 19:06:18,965 INFO jira_conf: Starting JiraConf AI
+2026-09-26 19:06:18,966 DEBUG jira_conf: Fetching boards list from Jira
+2026-09-26 19:06:19,804 INFO jira_conf: Processing sprint: PG2 Sprint 3
+2026-09-26 19:06:20,602 INFO jira_conf: Found 1 done tickets for sprint PG2 Sprint 3
+2026-09-26 19:07:53,704 INFO jira_conf: Starting JiraConf AI
+2026-09-26 19:07:53,705 DEBUG jira_conf: Fetching boards list from Jira
+2026-09-26 19:07:54,291 INFO jira_conf: Processing sprint: PG2 Sprint 3
+2026-09-26 19:07:54,989 INFO jira_conf: Found 1 done tickets for sprint PG2 Sprint 3
+2026-09-26 19:08:04,749 DEBUG jira_conf.planner: Planner response: {'action': 'FETCH_TICKETS', 'reason': 'To identify the issues that need to be included in the release notes for PG2 Sprint 3.'}
+2026-09-26 19:08:04,749 INFO jira_conf.workflow: Workflow step 1: FETCH_TICKETS
+2026-09-26 19:08:09,231 DEBUG jira_conf.planner: Planner response: {'action': 'GENERATE_RELEASE_NOTES', 'reason': 'Generate release notes after fetching tickets.'}
+2026-09-26 19:08:09,231 WARNING jira_conf.workflow: Planner selected action GENERATE_RELEASE_NOTES, but its prerequisites are not met
+2026-09-26 19:08:09,232 INFO jira_conf.workflow: Workflow step 2: INSPECT_CONFLUENCE
+2026-09-26 19:08:13,925 DEBUG jira_conf.planner: Planner response: {'action': 'GENERATE_RELEASE_NOTES', 'reason': 'No release notes have been generated yet.'}
+2026-09-26 19:08:13,925 INFO jira_conf.workflow: Workflow step 3: GENERATE_RELEASE_NOTES
+2026-09-26 19:08:13,926 INFO jira_conf.release_agent: Processing PG2-26
+2026-09-26 19:08:24,514 DEBUG jira_conf.planner: Planner response: {'action': 'GENERATE_RELEASE_NOTES', 'reason': 'Next step in the workflow is to generate release notes after inspecting Confluence pages.'}
+2026-09-26 19:08:24,514 WARNING jira_conf.workflow: Planner selected action GENERATE_RELEASE_NOTES, but its prerequisites are not met
+2026-09-26 19:08:24,514 INFO jira_conf.workflow: Workflow step 4: REVIEW_RELEASE_NOTES
+2026-09-26 19:08:36,199 DEBUG jira_conf.planner: Planner response: {'action': 'UPLOAD_CONFLUENCE', 'reason': 'Page exists after release notes generation and review, now upload the generated release notes to Confluence.'}
+2026-09-26 19:08:36,200 INFO jira_conf.workflow: Workflow step 5: UPLOAD_CONFLUENCE
+2026-09-26 19:08:37,433 INFO jira_conf.confluence: Page Created: Release_Note_PG2 Sprint 3
+2026-09-26 19:08:42,337 DEBUG jira_conf.planner: Planner response: {'action': 'GENERATE_RELEASE_NOTES', 'reason': 'No action has been taken to generate release notes yet.'}
+2026-09-26 19:08:42,338 WARNING jira_conf.workflow: Planner selected action GENERATE_RELEASE_NOTES, but its prerequisites are not met
+2026-09-26 19:08:42,338 INFO jira_conf.workflow: Workflow step 6: VERIFY_CONFLUENCE
+2026-09-26 19:08:47,525 DEBUG jira_conf.planner: Planner response: {'action': 'FINISH', 'reason': 'All release notes generation and verification steps have been completed.'}
+2026-09-26 19:08:47,525 INFO jira_conf.workflow: Workflow step 7: FINISH
+2026-09-26 19:08:47,526 INFO jira_conf: Workflow finished for PG2 Sprint 3 with stage=finished

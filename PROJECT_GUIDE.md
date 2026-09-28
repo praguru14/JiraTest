@@ -113,11 +113,14 @@ For a sprint that needs processing, `WorkflowAgent` runs a bounded loop. The pla
 - `GENERATE_RELEASE_NOTES`
 - `REVIEW_RELEASE_NOTES`
 - `UPLOAD_CONFLUENCE`
+- `VERIFY_CONFLUENCE`
 - `FINISH`
 
-The workflow also enforces stage transitions so that a model cannot freely skip required steps.
+The planner chooses the next action from the current goal, state, action history,
+tool results, and errors. The controller still enforces prerequisites so the
+agent cannot upload unreviewed notes or finish before publishing is verified.
 
-The normal successful sequence is:
+One successful sequence is:
 
 ```text
 FETCH_TICKETS
@@ -125,10 +128,13 @@ FETCH_TICKETS
   -> GENERATE_RELEASE_NOTES
   -> REVIEW_RELEASE_NOTES
   -> UPLOAD_CONFLUENCE
+  -> VERIFY_CONFLUENCE
   -> FINISH
 ```
 
-The workflow allows a maximum of 12 steps.
+The agent can choose a different valid sequence when recovery is needed. It has
+a maximum of 12 steps, keeps a short action history, and retries failed tools
+through guarded recovery decisions.
 
 ### 6. Release-note generation
 
@@ -279,7 +285,7 @@ The client requests JSON output and uses a low temperature for more predictable 
 | `config.py` | Loads environment configuration |
 | `agents/jira_agent.py` | Jira boards, sprints, and Done-ticket queries |
 | `agents/confluence_agent.py` | Confluence page lookup, creation, and update |
-| `agents/workflow_agent.py` | Bounded workflow state machine |
+| `agents/workflow_agent.py` | Goal-driven agent loop, tool guards, recovery, and verification |
 | `agents/planner_agent.py` | LLM-based next-action selection |
 | `agents/release_agent.py` | Per-ticket release-note generation and validation |
 | `agents/reviewer_agent.py` | Release-note review |
@@ -340,7 +346,7 @@ The project is intentionally modular:
 - LLM selection is isolated behind `LLMAdapter`.
 - Prompts are external text files.
 - HTML is externalized in a template.
-- Workflow decisions and stage transitions are centralized in `WorkflowAgent`.
+- Workflow decisions, tool guards, recovery, and verification are centralized in `WorkflowAgent`.
 
 When changing the release-note schema, update all three places together:
 

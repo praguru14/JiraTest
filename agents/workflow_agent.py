@@ -15,6 +15,7 @@ class WorkflowAgent:
         "GENERATE_RELEASE_NOTES",
         "REVIEW_RELEASE_NOTES",
         "UPLOAD_CONFLUENCE",
+        "VERIFY_CONFLUENCE",
         "FINISH",
     }
 
@@ -29,8 +30,10 @@ class WorkflowAgent:
         state = {
             "stage": "start",
             "sprint": sprint.name,
+            "goal": f"Publish accurate release notes for {sprint.name}",
             "issues": [],
             "release_notes": [],
+            "action_history": [],
             "available_actions": sorted(self.ACTIONS),
         }
         if initial_state:
@@ -42,6 +45,7 @@ class WorkflowAgent:
             "GENERATE_RELEASE_NOTES": self._generate_release_notes,
             "REVIEW_RELEASE_NOTES": self._review_release_notes,
             "UPLOAD_CONFLUENCE": self._upload_confluence,
+            "VERIFY_CONFLUENCE": self._verify_confluence,
         }
 
         for step in range(1, max_steps + 1):
@@ -53,50 +57,38 @@ class WorkflowAgent:
                 logger.warning(state["last_error"])
                 action = self._recovery_action(state)
 
-            # Enforce valid stage transitions even when the local planner
-            # repeats an action after a tool has already completed.
-            stage = state.get("stage")
-            if stage == "start":
-                action = "FETCH_TICKETS"
-            elif stage == "tickets_fetched":
-                action = "INSPECT_CONFLUENCE"
-            elif stage == "confluence_inspected":
-                action = "GENERATE_RELEASE_NOTES"
-            elif stage == "generated":
-                action = "REVIEW_RELEASE_NOTES"
-            elif stage == "reviewed":
-                action = "UPLOAD_CONFLUENCE"
-            elif stage == "review_failed":
-                action = (
-                    "GENERATE_RELEASE_NOTES"
-                    if state.get("review_attempts", 0) < 1
-                    else "FINISH"
+            if not self._action_is_safe(action, state):
+                state["last_error"] = (
+                    f"Planner selected action {action}, but its prerequisites are not met"
                 )
-            elif action == "GENERATE_RELEASE_NOTES" and stage == "generation_failed":
+                logger.warning(state["last_error"])
                 action = self._recovery_action(state)
-            elif stage == "uploaded":
-                action = "FINISH"
-            elif stage == "upload_failed":
-                action = "FINISH"
 
             print(f"Planner selected: {action}")
             logger.info("Workflow step %s: %s", step, action)
 
             if action == "FINISH":
-                state["stage"] = "finished"
-                return state
+                if state.get("verified"):
+                    state["stage"] = "finished"
+                    return state
+                state["last_error"] = "Cannot finish before Confluence is verified"
+                action = self._recovery_action(state)
+                if action == "FINISH":
+                    state["stage"] = "finished"
+                    return state
 
             try:
                 result = tools[action](sprint, state)
                 if result:
                     state.update(result)
                 state.pop("last_error", None)
+                state.setdefault("action_history", []).append(action)
             except Exception as exc:
                 state["last_error"] = f"{action} failed: {exc}"
                 logger.exception(state["last_error"])
                 print(f"{action} failed: {exc}")
-                if action == "UPLOAD_CONFLUENCE":
-                    state["stage"] = "upload_failed"
+                state["stage"] = "action_failed"
+                state.setdefault("action_history", []).append(action)
 
         state["stage"] = "stopped"
         state["last_error"] = f"Maximum workflow steps ({max_steps}) reached"
@@ -107,6 +99,7 @@ class WorkflowAgent:
     def _planner_state(state, step):
         return {
             "stage": state.get("stage"),
+            "goal": state.get("goal"),
             "sprint": state.get("sprint"),
             "issues_count": len(state.get("issues", [])),
             "release_notes_count": len(state.get("release_notes", [])),
@@ -114,10 +107,45 @@ class WorkflowAgent:
             "page_count": state.get("page_count", 0),
             "review": state.get("review"),
             "last_error": state.get("last_error"),
+            "verified": state.get("verified", False),
+            "action_history": state.get("action_history", [])[-6:],
             "step": step,
             "max_steps": 12,
             "available_actions": state.get("available_actions", []),
         }
+
+    @classmethod
+    def _action_is_safe(cls, action, state):
+        if action == "FETCH_TICKETS":
+            return not state.get("issues") or state.get("stage") in {
+                "start", "action_failed"
+            }
+        if action == "INSPECT_CONFLUENCE":
+            return bool(state.get("issues"))
+        if action == "GENERATE_RELEASE_NOTES":
+            return bool(state.get("issues")) and state.get("stage") in {
+                "confluence_inspected",
+                "generation_failed",
+                "action_failed",
+            }
+        if action == "REVIEW_RELEASE_NOTES":
+            return bool(state.get("release_notes")) and state.get("stage") in {
+                "generated",
+                "review_failed",
+                "action_failed",
+            }
+        if action == "UPLOAD_CONFLUENCE":
+            return (
+                state.get("review", {}).get("valid") is True
+                and cls._notes_have_valid_schema(state.get("release_notes", []))
+                and not state.get("uploaded")
+                and state.get("stage") in {"reviewed", "action_failed"}
+            )
+        if action == "VERIFY_CONFLUENCE":
+            return bool(state.get("uploaded")) and not state.get("verified")
+        if action == "FINISH":
+            return bool(state.get("verified"))
+        return False
 
     def _fetch_tickets(self, sprint, state):
         issues = state.get("issues") or self.jira.get_done_issues(sprint.name)
@@ -195,12 +223,27 @@ class WorkflowAgent:
         )
 
     def _upload_confluence(self, sprint, state):
-        if state.get("stage") != "reviewed":
+        if not self._action_is_safe("UPLOAD_CONFLUENCE", state):
             raise ValueError("Release notes must pass review before upload")
         title = f"Release_Note_{sprint.name}"
         html = HTMLBuilder.build(sprint.name, state.get("release_notes", []))
-        self.confluence.create_or_update_page(title, html)
+        uploaded = self.confluence.create_or_update_page(title, html)
+        if uploaded is False:
+            raise ValueError("Confluence update was cancelled")
         return {"stage": "uploaded", "uploaded": True}
+
+    def _verify_confluence(self, sprint, state):
+        title = f"Release_Note_{sprint.name}"
+        page = self.confluence.page_exists(title)
+        page_count = self.confluence.get_page_note_count(title) if page else 0
+        expected = len(state.get("release_notes", []))
+        verified = bool(page) and page_count >= expected
+        if not verified:
+            raise ValueError(
+                f"Verification failed: expected at least {expected} notes, found {page_count}"
+            )
+        print(f"Verified {title}: {page_count} release notes")
+        return {"stage": "verified", "verified": True, "page_count": page_count}
 
     @staticmethod
     def _recovery_action(state):
@@ -221,4 +264,19 @@ class WorkflowAgent:
             return "REVIEW_RELEASE_NOTES"
         if stage == "reviewed":
             return "UPLOAD_CONFLUENCE"
+        if stage == "uploaded":
+            return "VERIFY_CONFLUENCE"
+        if stage == "verified":
+            return "FINISH"
+        if stage == "action_failed":
+            history = state.get("action_history", [])
+            if history and history[-1] == "UPLOAD_CONFLUENCE":
+                return "UPLOAD_CONFLUENCE"
+            if history and history[-1] == "VERIFY_CONFLUENCE":
+                return "VERIFY_CONFLUENCE"
+            if state.get("release_notes"):
+                return "REVIEW_RELEASE_NOTES"
+            if state.get("issues"):
+                return "GENERATE_RELEASE_NOTES"
+            return "FETCH_TICKETS"
         return "FINISH"

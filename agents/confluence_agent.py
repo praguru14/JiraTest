@@ -99,7 +99,7 @@ class ConfluenceAgent:
             if choice != "y":
                 print("Skipped.")
                 logger.info("User chose to skip updating existing page")
-                return
+                return False
 
             version = page.get("version", {}).get("number", 0) + 1
             self.client.put(
@@ -119,7 +119,7 @@ class ConfluenceAgent:
             logger.info(f"Page Updated: {title}")
             print("Page Updated.")
 
-            return
+            return True
 
         self.client.post(
             "rest/api/content",
@@ -138,3 +138,4 @@ class ConfluenceAgent:
         )
         logger.info(f"Page Created: {title}")
         print("Page Created.")
+        return True
