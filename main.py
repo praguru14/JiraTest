@@ -140,7 +140,7 @@ def main():
         print(f"\nFetching Done tickets from {sprint.name}...\n")
         logger.info(f"Processing sprint: {sprint.name}")
 
-        issues = jira.get_done_issues(sprint.name)
+        issues = jira.get_done_work_items(sprint.name)
 
         print(f"Found {len(issues)} Done tickets.\n")
         logger.info(f"Found {len(issues)} done tickets for sprint {sprint.name}")

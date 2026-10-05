@@ -8,17 +8,17 @@ unless the state shows that a retry or verification is needed.
 
 Possible actions are
 
-FETCH_TICKETS
+FETCH_ITEMS
 
-INSPECT_CONFLUENCE
+INSPECT_DESTINATION
 
-GENERATE_RELEASE_NOTES
+GENERATE_DOCUMENT
 
-REVIEW_RELEASE_NOTES
+REVIEW_DOCUMENT
 
-UPLOAD_CONFLUENCE
+PUBLISH_DOCUMENT
 
-VERIFY_CONFLUENCE
+VERIFY_OUTPUT
 
 FINISH
 
@@ -27,6 +27,6 @@ Return ONLY JSON with an optional short reason.
 Example
 
 {
-    "action":"FETCH_TICKETS",
-    "reason":"Tickets are not available yet."
+    "action":"FETCH_ITEMS",
+    "reason":"Work items are not available yet."
 }

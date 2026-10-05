@@ -108,12 +108,12 @@ This is a count-based check. It does not compare every Jira ticket number with e
 
 For a sprint that needs processing, `WorkflowAgent` runs a bounded loop. The planner receives a compact state object and returns an action such as:
 
-- `FETCH_TICKETS`
-- `INSPECT_CONFLUENCE`
-- `GENERATE_RELEASE_NOTES`
-- `REVIEW_RELEASE_NOTES`
-- `UPLOAD_CONFLUENCE`
-- `VERIFY_CONFLUENCE`
+- `FETCH_ITEMS`
+- `INSPECT_DESTINATION`
+- `GENERATE_DOCUMENT`
+- `REVIEW_DOCUMENT`
+- `PUBLISH_DOCUMENT`
+- `VERIFY_OUTPUT`
 - `FINISH`
 
 The planner chooses the next action from the current goal, state, action history,
@@ -123,12 +123,12 @@ agent cannot upload unreviewed notes or finish before publishing is verified.
 One successful sequence is:
 
 ```text
-FETCH_TICKETS
-  -> INSPECT_CONFLUENCE
-  -> GENERATE_RELEASE_NOTES
-  -> REVIEW_RELEASE_NOTES
-  -> UPLOAD_CONFLUENCE
-  -> VERIFY_CONFLUENCE
+FETCH_ITEMS
+  -> INSPECT_DESTINATION
+  -> GENERATE_DOCUMENT
+  -> REVIEW_DOCUMENT
+  -> PUBLISH_DOCUMENT
+  -> VERIFY_OUTPUT
   -> FINISH
 ```
 

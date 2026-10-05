@@ -27,7 +27,7 @@ def process_sprint(jira, confluence, planner, reviewer, release_agent, sprint, b
     title = f"Release_Note_{sprint.name}"
 
     try:
-        issues = jira.get_done_issues(sprint.name)
+        issues = jira.get_done_work_items(sprint.name)
         page = confluence.page_exists(title)
         page_count = confluence.get_page_note_count(title) if page else 0
 
@@ -75,7 +75,7 @@ def run_loop(interval_minutes: int, once: bool = False, board_id: int | None = N
                     page = confluence.page_exists(title)
                     page_count = confluence.get_page_note_count(title) if page else 0
 
-                    issues = jira.get_done_issues(sprint.name)
+                    issues = jira.get_done_work_items(sprint.name)
 
                     if not issues:
                         continue

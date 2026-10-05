@@ -1,0 +1,14 @@
+{
+  "release": "Sprint 24",
+  "critical_open_bugs": 0,
+  "ci_failures": [],
+  "security_findings": [],
+  "missing_approvals": ["Product owner"],
+  "test_coverage": 86.5,
+  "changed_services": ["payments", "authentication"],
+  "recent_incidents": ["INC-101: payment timeout"],
+  "metadata": {
+    "jira_sprint": "Sprint 24",
+    "pipeline": "build-4821"
+  }
+}

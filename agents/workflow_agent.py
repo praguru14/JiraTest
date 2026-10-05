@@ -1,6 +1,8 @@
 import logging
 
 from services.html_builder import HTMLBuilder
+from publishers.confluence_publisher import ConfluencePublisher
+from sources.jira_source import JiraWorkItemSource
 
 
 logger = logging.getLogger("jira_conf.workflow")
@@ -10,27 +12,54 @@ class WorkflowAgent:
     """Runs a bounded observe-decide-act loop for one sprint."""
 
     ACTIONS = {
-        "FETCH_TICKETS",
-        "INSPECT_CONFLUENCE",
-        "GENERATE_RELEASE_NOTES",
-        "REVIEW_RELEASE_NOTES",
-        "UPLOAD_CONFLUENCE",
-        "VERIFY_CONFLUENCE",
+        "FETCH_ITEMS",
+        "INSPECT_DESTINATION",
+        "GENERATE_DOCUMENT",
+        "REVIEW_DOCUMENT",
+        "PUBLISH_DOCUMENT",
+        "VERIFY_OUTPUT",
         "FINISH",
     }
 
-    def __init__(self, jira, confluence, planner, reviewer, release_agent):
+    LEGACY_ACTIONS = {
+        "FETCH_TICKETS": "FETCH_ITEMS",
+        "INSPECT_CONFLUENCE": "INSPECT_DESTINATION",
+        "GENERATE_RELEASE_NOTES": "GENERATE_DOCUMENT",
+        "REVIEW_RELEASE_NOTES": "REVIEW_DOCUMENT",
+        "UPLOAD_CONFLUENCE": "PUBLISH_DOCUMENT",
+        "VERIFY_CONFLUENCE": "VERIFY_OUTPUT",
+    }
+
+    def __init__(
+        self,
+        jira,
+        confluence,
+        planner,
+        reviewer,
+        release_agent,
+        publisher=None,
+        source=None,
+        generator=None,
+        renderer=None,
+        title_builder=None,
+        notes_validator=None,
+    ):
         self.jira = jira
         self.confluence = confluence
+        self.publisher = publisher or ConfluencePublisher(confluence)
+        self.source = source or JiraWorkItemSource(jira)
         self.planner = planner
         self.reviewer = reviewer
-        self.release_agent = release_agent
+        self.generator = generator or release_agent
+        self.renderer = renderer or HTMLBuilder.build_document
+        self.title_builder = title_builder or (lambda scope: f"Release_Note_{scope}")
+        self.notes_validator = notes_validator or self._default_notes_validator
 
     def run(self, sprint, initial_state=None, max_steps=12):
         state = {
             "stage": "start",
-            "sprint": sprint.name,
-            "goal": f"Publish accurate release notes for {sprint.name}",
+            "sprint": self._scope_name(sprint),
+            "goal": f"Publish an accurate document for {self._scope_name(sprint)}",
             "issues": [],
             "release_notes": [],
             "action_history": [],
@@ -40,17 +69,18 @@ class WorkflowAgent:
             state.update(initial_state)
 
         tools = {
-            "FETCH_TICKETS": self._fetch_tickets,
-            "INSPECT_CONFLUENCE": self._inspect_confluence,
-            "GENERATE_RELEASE_NOTES": self._generate_release_notes,
-            "REVIEW_RELEASE_NOTES": self._review_release_notes,
-            "UPLOAD_CONFLUENCE": self._upload_confluence,
-            "VERIFY_CONFLUENCE": self._verify_confluence,
+            "FETCH_ITEMS": self._fetch_items,
+            "INSPECT_DESTINATION": self._inspect_destination,
+            "GENERATE_DOCUMENT": self._generate_document,
+            "REVIEW_DOCUMENT": self._review_document,
+            "PUBLISH_DOCUMENT": self._publish_document,
+            "VERIFY_OUTPUT": self._verify_output,
         }
 
         for step in range(1, max_steps + 1):
             decision = self.planner.next_action(self._planner_state(state, step))
             action = decision.get("action") if isinstance(decision, dict) else None
+            action = self.LEGACY_ACTIONS.get(action, action)
 
             if action not in self.ACTIONS:
                 state["last_error"] = f"Planner selected unsupported action: {action}"
@@ -114,60 +144,62 @@ class WorkflowAgent:
             "available_actions": state.get("available_actions", []),
         }
 
-    @classmethod
-    def _action_is_safe(cls, action, state):
-        if action == "FETCH_TICKETS":
+    def _action_is_safe(self, action, state):
+        if action == "FETCH_ITEMS":
             return not state.get("issues") or state.get("stage") in {
                 "start", "action_failed"
             }
-        if action == "INSPECT_CONFLUENCE":
+        if action == "INSPECT_DESTINATION":
             return bool(state.get("issues"))
-        if action == "GENERATE_RELEASE_NOTES":
+        if action == "GENERATE_DOCUMENT":
             return bool(state.get("issues")) and state.get("stage") in {
                 "confluence_inspected",
                 "generation_failed",
                 "action_failed",
             }
-        if action == "REVIEW_RELEASE_NOTES":
+        if action == "REVIEW_DOCUMENT":
             return bool(state.get("release_notes")) and state.get("stage") in {
                 "generated",
                 "review_failed",
                 "action_failed",
             }
-        if action == "UPLOAD_CONFLUENCE":
+        if action == "PUBLISH_DOCUMENT":
             return (
                 state.get("review", {}).get("valid") is True
-                and cls._notes_have_valid_schema(state.get("release_notes", []))
+                and self.notes_validator(state.get("release_notes", []))
                 and not state.get("uploaded")
                 and state.get("stage") in {"reviewed", "action_failed"}
             )
-        if action == "VERIFY_CONFLUENCE":
+        if action == "VERIFY_OUTPUT":
             return bool(state.get("uploaded")) and not state.get("verified")
         if action == "FINISH":
             return bool(state.get("verified"))
         return False
 
-    def _fetch_tickets(self, sprint, state):
-        issues = state.get("issues") or self.jira.get_done_issues(sprint.name)
+    def _fetch_items(self, sprint, state):
+        issues = state.get("issues") or self.source.fetch_done_items(self._scope_name(sprint))
         print(f"Fetched {len(issues)} Done tickets")
         return {"issues": issues, "stage": "tickets_fetched"}
 
-    def _inspect_confluence(self, sprint, state):
-        title = f"Release_Note_{sprint.name}"
-        page = self.confluence.page_exists(title)
-        page_count = self.confluence.get_page_note_count(title) if page else 0
+    def _inspect_destination(self, sprint, state):
+        title = self.title_builder(self._scope_name(sprint))
+        page = self.publisher.exists(title)
+        page_count = self.publisher.count_items(title) if page else 0
         return {
             "page_exists": bool(page),
             "page_count": page_count,
             "stage": "confluence_inspected",
         }
 
-    def _generate_release_notes(self, sprint, state):
+    def _generate_document(self, sprint, state):
         issues = state.get("issues", [])
         if not issues:
             raise ValueError("No Jira tickets are available")
         print(f"Generating release notes for {len(issues)} tickets")
-        notes = self.release_agent.generate_release_notes(issues)
+        if hasattr(self.generator, "generate"):
+            notes = self.generator.generate(issues)
+        else:
+            notes = self.generator.generate_release_notes(issues)
         if not notes:
             attempts = state.get("generation_attempts", 0) + 1
             return {
@@ -182,7 +214,7 @@ class WorkflowAgent:
             "stage": "generated",
         }
 
-    def _review_release_notes(self, sprint, state):
+    def _review_document(self, sprint, state):
         notes = state.get("release_notes", [])
         if not notes:
             raise ValueError("No release notes are available")
@@ -192,7 +224,7 @@ class WorkflowAgent:
 
         # A small local model can incorrectly reject otherwise well-formed
         # notes. The schema check remains deterministic and protects upload.
-        if not valid and self._notes_have_valid_schema(notes):
+        if not valid and self.notes_validator(notes):
             review = {
                 "valid": True,
                 "errors": [],
@@ -212,7 +244,7 @@ class WorkflowAgent:
         return result
 
     @staticmethod
-    def _notes_have_valid_schema(notes):
+    def _default_notes_validator(notes):
         return all(
             isinstance(note, dict)
             and isinstance(note.get("label"), str)
@@ -222,20 +254,22 @@ class WorkflowAgent:
             for note in notes
         )
 
-    def _upload_confluence(self, sprint, state):
-        if not self._action_is_safe("UPLOAD_CONFLUENCE", state):
+    def _publish_document(self, sprint, state):
+        if not self._action_is_safe("PUBLISH_DOCUMENT", state):
             raise ValueError("Release notes must pass review before upload")
-        title = f"Release_Note_{sprint.name}"
-        html = HTMLBuilder.build(sprint.name, state.get("release_notes", []))
-        uploaded = self.confluence.create_or_update_page(title, html)
+        document = self.renderer(
+            self._scope_name(sprint),
+            state.get("release_notes", []),
+        )
+        uploaded = self.publisher.publish(document)
         if uploaded is False:
             raise ValueError("Confluence update was cancelled")
         return {"stage": "uploaded", "uploaded": True}
 
-    def _verify_confluence(self, sprint, state):
-        title = f"Release_Note_{sprint.name}"
-        page = self.confluence.page_exists(title)
-        page_count = self.confluence.get_page_note_count(title) if page else 0
+    def _verify_output(self, sprint, state):
+        title = self.title_builder(self._scope_name(sprint))
+        page = self.publisher.exists(title)
+        page_count = self.publisher.count_items(title) if page else 0
         expected = len(state.get("release_notes", []))
         verified = bool(page) and page_count >= expected
         if not verified:
@@ -243,40 +277,55 @@ class WorkflowAgent:
                 f"Verification failed: expected at least {expected} notes, found {page_count}"
             )
         print(f"Verified {title}: {page_count} release notes")
-        return {"stage": "verified", "verified": True, "page_count": page_count}
+        page_url = None
+        get_url = getattr(self.publisher, "get_url", None)
+        if get_url:
+            page_url = get_url(title)
+        if page_url:
+            print(f"Confluence page: {page_url}")
+        return {
+            "stage": "verified",
+            "verified": True,
+            "page_count": page_count,
+            "page_url": page_url,
+        }
+
+    @staticmethod
+    def _scope_name(scope):
+        return getattr(scope, "name", str(scope))
 
     @staticmethod
     def _recovery_action(state):
         stage = state.get("stage")
         if stage == "start":
-            return "FETCH_TICKETS"
+            return "FETCH_ITEMS"
         if stage == "tickets_fetched":
-            return "INSPECT_CONFLUENCE"
+            return "INSPECT_DESTINATION"
         if stage in {"confluence_inspected", "review_failed"}:
             if state.get("review_attempts", 0) >= 1:
                 return "FINISH"
-            return "GENERATE_RELEASE_NOTES"
+            return "GENERATE_DOCUMENT"
         if stage == "generation_failed":
             if state.get("generation_attempts", 0) >= 3:
                 return "FINISH"
-            return "GENERATE_RELEASE_NOTES"
+            return "GENERATE_DOCUMENT"
         if stage == "generated":
-            return "REVIEW_RELEASE_NOTES"
+            return "REVIEW_DOCUMENT"
         if stage == "reviewed":
-            return "UPLOAD_CONFLUENCE"
+            return "PUBLISH_DOCUMENT"
         if stage == "uploaded":
-            return "VERIFY_CONFLUENCE"
+            return "VERIFY_OUTPUT"
         if stage == "verified":
             return "FINISH"
         if stage == "action_failed":
             history = state.get("action_history", [])
-            if history and history[-1] == "UPLOAD_CONFLUENCE":
-                return "UPLOAD_CONFLUENCE"
-            if history and history[-1] == "VERIFY_CONFLUENCE":
-                return "VERIFY_CONFLUENCE"
+            if history and history[-1] == "PUBLISH_DOCUMENT":
+                return "PUBLISH_DOCUMENT"
+            if history and history[-1] == "VERIFY_OUTPUT":
+                return "VERIFY_OUTPUT"
             if state.get("release_notes"):
-                return "REVIEW_RELEASE_NOTES"
+                return "REVIEW_DOCUMENT"
             if state.get("issues"):
-                return "GENERATE_RELEASE_NOTES"
-            return "FETCH_TICKETS"
+                return "GENERATE_DOCUMENT"
+            return "FETCH_ITEMS"
         return "FINISH"

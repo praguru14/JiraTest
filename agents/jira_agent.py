@@ -39,3 +39,8 @@ class JiraAgent:
             jql,
             maxResults=100
         )
+
+    def get_done_work_items(self, sprint_name):
+        from sources.jira_source import JiraWorkItemSource
+
+        return JiraWorkItemSource(self).fetch_done_items(sprint_name)

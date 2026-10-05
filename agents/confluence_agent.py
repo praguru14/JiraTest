@@ -47,6 +47,24 @@ class ConfluenceAgent:
     def page_exists(self, title):
         return self._find_page(title)
 
+    def get_page_url(self, title):
+        page = self._find_page(title)
+        if not page:
+            return None
+
+        links = page.get("_links", {})
+        webui = links.get("webui")
+        if webui:
+            if webui.startswith("http://") or webui.startswith("https://"):
+                return webui
+            base = links.get("base") or config.CONFLUENCE_URL.rstrip("/")
+            return f"{base.rstrip('/')}/{webui.lstrip('/')}"
+
+        page_id = page.get("id")
+        if page_id and config.CONFLUENCE_URL:
+            return f"{config.CONFLUENCE_URL.rstrip('/')}/pages/{page_id}"
+        return None
+
     def _find_page(self, title, expand=None):
         response = self.client.get(
             "rest/api/content",

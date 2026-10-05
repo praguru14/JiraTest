@@ -963,3 +963,81 @@ requests.exceptions.HTTPError: org.springframework.http.converter.HttpMessageNot
 2026-09-26 19:08:47,525 DEBUG jira_conf.planner: Planner response: {'action': 'FINISH', 'reason': 'All release notes generation and verification steps have been completed.'}
 2026-09-26 19:08:47,525 INFO jira_conf.workflow: Workflow step 7: FINISH
 2026-09-26 19:08:47,526 INFO jira_conf: Workflow finished for PG2 Sprint 3 with stage=finished
+2026-09-30 05:24:16,175 INFO jira_conf: Starting JiraConf AI
+2026-09-30 05:24:16,175 DEBUG jira_conf: Fetching boards list from Jira
+2026-09-30 05:26:00,711 INFO jira_conf: Starting JiraConf AI
+2026-09-30 05:26:00,712 DEBUG jira_conf: Fetching boards list from Jira
+2026-09-30 05:26:01,524 INFO jira_conf: Processing sprint: PG2 Sprint 2
+2026-09-30 05:26:03,048 INFO jira_conf: Found 1 done tickets for sprint PG2 Sprint 2
+2026-09-30 05:26:13,064 DEBUG jira_conf.planner: Planner response: {'action': 'GENERATE_DOCUMENT', 'reason': 'Generate release notes for PG2 Sprint 2 based on the available issue count.'}
+2026-09-30 05:26:13,065 WARNING jira_conf.workflow: Planner selected action GENERATE_DOCUMENT, but its prerequisites are not met
+2026-09-30 05:26:13,065 INFO jira_conf.workflow: Workflow step 1: FETCH_ITEMS
+2026-09-30 05:26:17,748 DEBUG jira_conf.planner: Planner response: {'action': 'GENERATE_DOCUMENT', 'reason': 'Generate release notes for the sprint based on fetched tickets.'}
+2026-09-30 05:26:17,749 WARNING jira_conf.workflow: Planner selected action GENERATE_DOCUMENT, but its prerequisites are not met
+2026-09-30 05:26:17,749 INFO jira_conf.workflow: Workflow step 2: INSPECT_DESTINATION
+2026-09-30 05:26:22,547 DEBUG jira_conf.planner: Planner response: {'action': 'GENERATE_DOCUMENT', 'reason': 'Generate release notes after inspecting the destination.'}
+2026-09-30 05:26:22,548 INFO jira_conf.workflow: Workflow step 3: GENERATE_DOCUMENT
+2026-09-30 05:26:22,552 INFO jira_conf.content_generator: Processing PG2-25
+2026-09-30 05:26:32,553 DEBUG jira_conf.planner: Planner response: {'action': 'PUBLISH_DOCUMENT', 'reason': 'The release notes have been generated and are ready for publication.'}
+2026-09-30 05:26:32,553 WARNING jira_conf.workflow: Planner selected action PUBLISH_DOCUMENT, but its prerequisites are not met
+2026-09-30 05:26:32,554 INFO jira_conf.workflow: Workflow step 4: REVIEW_DOCUMENT
+2026-09-30 05:26:43,335 DEBUG jira_conf.planner: Planner response: {'action': 'PUBLISH_DOCUMENT', 'reason': 'The document has been reviewed and is valid. The next step in the workflow is to publish it.'}
+2026-09-30 05:26:43,335 INFO jira_conf.workflow: Workflow step 5: PUBLISH_DOCUMENT
+2026-09-30 05:26:44,946 INFO jira_conf.confluence: Page Created: Release_Note_PG2 Sprint 2
+2026-09-30 05:26:49,931 DEBUG jira_conf.planner: Planner response: {'action': 'PUBLISH_DOCUMENT', 'reason': 'Reached the final step of publishing the release notes for PG2 Sprint 2.'}
+2026-09-30 05:26:49,931 WARNING jira_conf.workflow: Planner selected action PUBLISH_DOCUMENT, but its prerequisites are not met
+2026-09-30 05:26:49,931 INFO jira_conf.workflow: Workflow step 6: VERIFY_OUTPUT
+2026-09-30 05:26:55,729 DEBUG jira_conf.planner: Planner response: {'action': 'PUBLISH_DOCUMENT', 'reason': 'The document has been reviewed and is valid. The next step in the workflow is to publish it.'}
+2026-09-30 05:26:55,729 WARNING jira_conf.workflow: Planner selected action PUBLISH_DOCUMENT, but its prerequisites are not met
+2026-09-30 05:26:55,729 INFO jira_conf.workflow: Workflow step 7: FINISH
+2026-09-30 05:26:55,730 INFO jira_conf: Workflow finished for PG2 Sprint 2 with stage=finished
+2026-09-30 05:51:36,003 INFO jira_conf: Starting JiraConf AI
+2026-09-30 05:51:36,004 DEBUG jira_conf: Fetching boards list from Jira
+2026-09-30 05:51:36,744 INFO jira_conf: Processing sprint: PG2 Sprint 1
+2026-09-30 05:51:37,637 INFO jira_conf: Found 24 done tickets for sprint PG2 Sprint 1
+2026-09-30 05:51:38,664 INFO jira_conf: Skipping sprint PG2 Sprint 1: page has 24 items, issues 24
+2026-09-30 05:54:30,122 INFO jira_conf: Starting JiraConf AI
+2026-09-30 05:54:30,127 DEBUG jira_conf: Fetching boards list from Jira
+2026-09-30 05:54:30,882 INFO jira_conf: Processing sprint: PG2 Sprint 2
+2026-09-30 05:54:32,029 INFO jira_conf: Found 1 done tickets for sprint PG2 Sprint 2
+2026-09-30 05:54:41,638 DEBUG jira_conf.planner: Planner response: {'action': 'GENERATE_DOCUMENT', 'reason': 'Generate the document as the next step towards publishing an accurate document for PG2 Sprint 2.'}
+2026-09-30 05:54:41,638 WARNING jira_conf.workflow: Planner selected action GENERATE_DOCUMENT, but its prerequisites are not met
+2026-09-30 05:54:41,638 INFO jira_conf.workflow: Workflow step 1: FETCH_ITEMS
+2026-09-30 05:54:46,485 DEBUG jira_conf.planner: Planner response: {'action': 'GENERATE_DOCUMENT', 'reason': 'Generate the document based on fetched tickets for PG2 Sprint 2.'}
+2026-09-30 05:54:46,486 WARNING jira_conf.workflow: Planner selected action GENERATE_DOCUMENT, but its prerequisites are not met
+2026-09-30 05:54:46,486 INFO jira_conf.workflow: Workflow step 2: INSPECT_DESTINATION
+2026-09-30 05:54:52,142 DEBUG jira_conf.planner: Planner response: {'action': 'PUBLISH_DOCUMENT', 'reason': 'The document has been generated and inspected. The next step is to publish it for the PG2 Sprint 2.'}
+2026-09-30 05:54:52,142 WARNING jira_conf.workflow: Planner selected action PUBLISH_DOCUMENT, but its prerequisites are not met
+2026-09-30 05:54:52,142 INFO jira_conf.workflow: Workflow step 3: GENERATE_DOCUMENT
+2026-09-30 05:54:52,143 INFO jira_conf.content_generator: Processing PG2-25
+2026-09-30 05:55:02,329 DEBUG jira_conf.planner: Planner response: {'action': 'PUBLISH_DOCUMENT', 'reason': 'The document has been generated and is ready for publication.'}
+2026-09-30 05:55:02,329 WARNING jira_conf.workflow: Planner selected action PUBLISH_DOCUMENT, but its prerequisites are not met
+2026-09-30 05:55:02,329 INFO jira_conf.workflow: Workflow step 4: REVIEW_DOCUMENT
+2026-09-30 05:55:14,212 DEBUG jira_conf.planner: Planner response: {'action': 'PUBLISH_DOCUMENT', 'reason': 'The document has been reviewed and is valid. The next step in the workflow is to publish it.'}
+2026-09-30 05:56:38,453 INFO jira_conf: Starting JiraConf AI
+2026-09-30 05:56:38,454 DEBUG jira_conf: Fetching boards list from Jira
+2026-09-30 05:56:39,096 INFO jira_conf: Processing sprint: PG2 Sprint 2
+2026-09-30 05:56:40,541 INFO jira_conf: Found 1 done tickets for sprint PG2 Sprint 2
+2026-09-30 05:56:46,912 DEBUG jira_conf.planner: Planner response: {'action': 'GENERATE_DOCUMENT', 'reason': 'Generate the document as the next step towards publishing an accurate document for PG2 Sprint 2.'}
+2026-09-30 05:56:46,912 WARNING jira_conf.workflow: Planner selected action GENERATE_DOCUMENT, but its prerequisites are not met
+2026-09-30 05:56:46,913 INFO jira_conf.workflow: Workflow step 1: FETCH_ITEMS
+2026-09-30 05:56:51,953 DEBUG jira_conf.planner: Planner response: {'action': 'GENERATE_DOCUMENT', 'reason': 'Generate the document based on the fetched tickets for PG2 Sprint 2.'}
+2026-09-30 05:56:51,953 WARNING jira_conf.workflow: Planner selected action GENERATE_DOCUMENT, but its prerequisites are not met
+2026-09-30 05:56:51,953 INFO jira_conf.workflow: Workflow step 2: INSPECT_DESTINATION
+2026-09-30 05:56:58,146 DEBUG jira_conf.planner: Planner response: {'action': 'PUBLISH_DOCUMENT', 'reason': 'The document has been generated and inspected. The next step is to publish it for the PG2 Sprint 2.'}
+2026-09-30 05:56:58,146 WARNING jira_conf.workflow: Planner selected action PUBLISH_DOCUMENT, but its prerequisites are not met
+2026-09-30 05:56:58,146 INFO jira_conf.workflow: Workflow step 3: GENERATE_DOCUMENT
+2026-09-30 05:56:58,147 INFO jira_conf.content_generator: Processing PG2-25
+2026-09-30 05:57:07,852 DEBUG jira_conf.planner: Planner response: {'action': 'PUBLISH_DOCUMENT', 'reason': 'The document has been generated and is ready for publication.'}
+2026-09-30 05:57:07,852 WARNING jira_conf.workflow: Planner selected action PUBLISH_DOCUMENT, but its prerequisites are not met
+2026-09-30 05:57:07,852 INFO jira_conf.workflow: Workflow step 4: REVIEW_DOCUMENT
+2026-09-30 05:57:18,545 DEBUG jira_conf.planner: Planner response: {'action': 'PUBLISH_DOCUMENT', 'reason': 'The document has been reviewed and is valid. The next step is to publish it.'}
+2026-09-30 05:57:18,545 INFO jira_conf.workflow: Workflow step 5: PUBLISH_DOCUMENT
+2026-09-30 05:57:19,879 INFO jira_conf.confluence: Page Created: Release_Note_PG2 Sprint 2
+2026-09-30 05:57:25,333 DEBUG jira_conf.planner: Planner response: {'action': 'PUBLISH_DOCUMENT', 'reason': 'The document has been reviewed and is valid. The next step in the workflow is to publish it.'}
+2026-09-30 05:57:25,333 WARNING jira_conf.workflow: Planner selected action PUBLISH_DOCUMENT, but its prerequisites are not met
+2026-09-30 05:57:25,333 INFO jira_conf.workflow: Workflow step 6: VERIFY_OUTPUT
+2026-09-30 05:57:32,063 DEBUG jira_conf.planner: Planner response: {'action': 'PUBLISH_DOCUMENT', 'reason': 'The document has been reviewed and is valid. The next step in the workflow is to publish it.'}
+2026-09-30 05:57:32,064 WARNING jira_conf.workflow: Planner selected action PUBLISH_DOCUMENT, but its prerequisites are not met
+2026-09-30 05:57:32,064 INFO jira_conf.workflow: Workflow step 7: FINISH
+2026-09-30 05:57:32,064 INFO jira_conf: Workflow finished for PG2 Sprint 2 with stage=finished
